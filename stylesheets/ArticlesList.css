@@ -62,3 +62,7 @@ h3 {
   color: var(--text-color);
   cursor: pointer;
 }
+
+.article-card a {
+  width: 100%;
+}
