@@ -10,7 +10,8 @@ export default function Login() {
   let navigate = useNavigate();
 
   function handleLoginChange(event) {
-    setUsername(event.target.value);
+    const usernameInput = event.target.value.toLowerCase();
+    setUsername(usernameInput);
   }
 
   function handleLoginClick(event) {
