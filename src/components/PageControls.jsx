@@ -36,7 +36,7 @@ export default function PageControls({
       </button>
       <p className="totalResults">
         Showing {lowerElementIndex}-{upperElementIndex} of {element_count + " "}
-        comments
+        results
       </p>
       <button
         className="previousPage"

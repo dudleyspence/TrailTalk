@@ -9,7 +9,8 @@ export const fetchArticles = (
   sortBy,
   order,
   pageNo,
-  articlesPerPage
+  articlesPerPage,
+  username
 ) => {
   const queries = {
     params: {
@@ -20,6 +21,10 @@ export const fetchArticles = (
       limit: articlesPerPage,
     },
   };
+  if (username) {
+    queries.params["author"] = username;
+  }
+  console.log(queries);
   return newsApi.get("/articles", queries);
 };
 

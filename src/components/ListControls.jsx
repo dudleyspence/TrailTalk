@@ -63,7 +63,9 @@ export default function ListControls({
         </select>
       </div>
       <div className="elementsPerPage">
-        <label htmlFor="elementsPerPage">Comments Per Page: </label>
+        <label htmlFor="elementsPerPage">
+          {canSortByComments ? "Articles Per Page: " : "Comments Per Page: "}
+        </label>
         <select
           name="commentsPerPage"
           id="commentsPerPage"

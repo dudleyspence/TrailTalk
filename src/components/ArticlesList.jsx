@@ -6,7 +6,10 @@ import TopicsNav from "./TopicsNav";
 import ListControls from "./ListControls";
 import PageControls from "./PageControls";
 
-export default function ArticlesList() {
+export default function ArticlesList({
+  username = undefined,
+  notProfilePage = true,
+}) {
   const [articlesList, setArticlesList] = useState([]);
   const { topic } = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +33,7 @@ export default function ArticlesList() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetchArticles(topic, sortBy, order, pageNo, articlesPerPage)
+    fetchArticles(topic, sortBy, order, pageNo, articlesPerPage, username)
       .then(({ data }) => {
         setTotalResults(data.total);
         setArticlesList(data.articles);
@@ -40,7 +43,15 @@ export default function ArticlesList() {
         setIsError(true);
         setIsLoading(false);
       });
-  }, [topic, setArticlesList, sortBy, order, pageNo, articlesPerPage]);
+  }, [
+    topic,
+    setArticlesList,
+    sortBy,
+    order,
+    pageNo,
+    articlesPerPage,
+    username,
+  ]);
 
   return isError ? (
     "Error"
@@ -54,7 +65,7 @@ export default function ArticlesList() {
         </button>
       </div>
 
-      <TopicsNav />
+      {notProfilePage && <TopicsNav />}
       <ListControls
         sortBy={sortBy}
         setSortBy={setSortBy}

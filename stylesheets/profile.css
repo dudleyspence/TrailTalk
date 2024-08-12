@@ -1,6 +1,6 @@
-.profile {
+.profile-content {
   display: flex;
-  height: 85vh;
+  height: 50vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -16,6 +16,6 @@
 }
 
 .profile figure img {
-  width: 50vw;
+  width: 200px;
   max-width: 400px;
 }

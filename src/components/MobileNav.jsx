@@ -6,15 +6,20 @@ import { useContext } from "react";
 
 export default function MobileNav() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { userLoggedIn, setUserLoggedIn } = useContext(UserContext);
+  const { setUserLoggedIn } = useContext(UserContext);
   const navigate = useNavigate();
 
   function handleNavClick() {
     setMenuOpen(!menuOpen);
   }
 
+  function closeMenu() {
+    setMenuOpen(false);
+  }
+
   function handleSignOutClick() {
     setUserLoggedIn("");
+    setMenuOpen(false);
     navigate("/login");
   }
 
@@ -35,7 +40,7 @@ export default function MobileNav() {
         </button>
         <ul className={`mobile-nav-links ${menuOpen ? "open" : ""}`}>
           <li className="navLinkItem">
-            <Link className="navButtons" to="/">
+            <Link className="navButtons" to="/" onClick={closeMenu}>
               News Feed
             </Link>
           </li>
