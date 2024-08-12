@@ -3,15 +3,18 @@ import CreatedTime from "./CreatedTime";
 import { Link } from "react-router-dom";
 import { updateArticleVotes } from "../../api";
 
-export default function ArticleCard({ article }) {
+export default function ArticleCard({ article, deleteComponent = undefined }) {
   return (
     <div className="article-card">
       <Link to={`/article/${article.article_id}`}>
         <h3>{article.title}</h3>
       </Link>
-      <Link to={`/topics/${article.topic}`}>
-        <p className="article-topic">{article.topic}</p>
-      </Link>
+      <div className="topicAndDelete">
+        <Link to={`/topics/${article.topic}`}>
+          <p className="article-topic">{article.topic}</p>
+        </Link>
+        {deleteComponent && deleteComponent}
+      </div>
       <CreatedTime timeString={article.created_at} />
       <Link to={`/article/${article.article_id}`}>
         <img

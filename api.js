@@ -86,3 +86,8 @@ export const addArticle = (article) => {
   console.log(article);
   return newsApi.post("/articles", article);
 };
+
+export const deleteArticleById = (article_id) => {
+  console.log(article_id);
+  return newsApi.delete(`/articles/${article_id}`);
+};

@@ -5,6 +5,7 @@ import ArticleCard from "./ArticleCard";
 import TopicsNav from "./TopicsNav";
 import ListControls from "./ListControls";
 import PageControls from "./PageControls";
+import DeleteArticle from "./deleteArticle";
 
 export default function ArticlesList({
   username = undefined,
@@ -81,7 +82,18 @@ export default function ArticlesList({
         <ul className="articles-list">
           {articlesList.map((article) => (
             <li key={article.article_id} style={{ listStyle: "none" }}>
-              <ArticleCard article={article} />
+              <ArticleCard
+                article={article}
+                deleteComponent={
+                  notProfilePage ? undefined : (
+                    <DeleteArticle
+                      article_id={article.article_id}
+                      articlesList={articlesList}
+                      setArticlesList={setArticlesList}
+                    />
+                  )
+                }
+              />
             </li>
           ))}
         </ul>
