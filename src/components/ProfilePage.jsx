@@ -13,7 +13,7 @@ export default function ProfilePage() {
         </figure>
         <p>Username: {userLoggedIn.username}</p>
       </div>
-
+      <h3 className="profileArticlesHeader">Your Articles:</h3>
       <ArticlesList username={userLoggedIn.username} notProfilePage={false} />
     </div>
   );

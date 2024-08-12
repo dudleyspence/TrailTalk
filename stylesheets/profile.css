@@ -26,3 +26,9 @@
   width: 100%;
   justify-content: space-between;
 }
+
+.profileArticlesHeader {
+  font-size: 1.1rem;
+  text-decoration: none;
+  padding-left: 40px;
+}
