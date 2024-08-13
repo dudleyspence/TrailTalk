@@ -31,24 +31,38 @@ export default function SiteLogicProvider() {
   return isNotLoading ? (
     <Routes>
       {/* login in page */}
-      <Route path="/login" element={<Login />} />
       <Route
-        path={"/"}
+        path="/login"
+        element={userLoggedIn ? <Navigate to="/" /> : <Login />}
+      />
+      <Route
+        path="/"
         element={userLoggedIn ? <ArticlesList /> : <Navigate to="/login" />}
       />
-      <Route path="/addarticle" element={<AddArticle />} />
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/topics/:topic" element={<ArticlesList />} />
+
+      <Route
+        path="/addarticle"
+        element={userLoggedIn ? <AddArticle /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/profile"
+        element={userLoggedIn ? <ProfilePage /> : <Navigate to="/login" />}
+      />
+
+      <Route
+        path="/topics/:topic"
+        element={userLoggedIn ? <ArticlesList /> : <Navigate to="/login" />}
+      />
       <Route
         path="/article/:article_id"
         element={userLoggedIn ? <SingleArticle /> : <Navigate to="/login" />}
       />
       <Route
         path="*"
-        element={userLoggedIn ? <Navigate to="/" /> : <Navigate to="/login" />}
+        element={<Navigate to={userLoggedIn ? "/" : "/login"} />}
       />
     </Routes>
   ) : (
-    "Page Loading"
+    <div>Page Loading...</div>
   );
 }
