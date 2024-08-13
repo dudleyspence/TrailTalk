@@ -30,7 +30,7 @@ export default function Login() {
 
   return (
     <section className="loginPage">
-      <form>
+      <form onSubmit={handleLoginClick}>
         <label htmlFor="username">Enter your username:</label>
         <input
           name="username"
@@ -45,9 +45,7 @@ export default function Login() {
             <p>please try again</p>
           </div>
         )}
-        <button onClick={handleLoginClick} className="styled-button">
-          Login
-        </button>
+        <button className="styled-button">Login</button>
       </form>
     </section>
   );
