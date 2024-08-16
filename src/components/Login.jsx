@@ -32,6 +32,7 @@ export default function Login() {
     <section className="loginPage">
       <form onSubmit={handleLoginClick}>
         <label htmlFor="username">Enter your username:</label>
+        <p>(Demo username - hikeguru)</p>
         <input
           name="username"
           id="username"
