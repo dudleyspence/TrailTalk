@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const baseURL = import.meta.env.BACKEND_URL;
+
 const newsApi = axios.create({
-  baseURL: "be-news-api-production.up.railway.app",
+  baseURL: baseURL,
 });
 
 export const fetchArticles = (
