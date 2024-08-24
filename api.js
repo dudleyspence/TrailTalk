@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const newsApi = axios.create({
-  baseURL: "https://be-news-api-2ebb.onrender.com/api/",
+  baseURL: "be-news-api-production.up.railway.app",
 });
 
 export const fetchArticles = (
