@@ -16,10 +16,10 @@ export default function Login() {
 
   function handleLoginClick(event) {
     event.preventDefault();
+    console.log(username);
     getUserByUsername(username)
       .then(({ data: { user } }) => {
         setUserLoggedIn(user);
-        console.log(user);
         navigate("/");
       })
       .catch((err) => {

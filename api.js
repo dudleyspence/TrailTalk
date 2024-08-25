@@ -1,9 +1,7 @@
 import axios from "axios";
 
-const baseURL = import.meta.env.BACKEND_URL;
-
 const newsApi = axios.create({
-  baseURL: baseURL,
+  baseURL: "https://be-news-api-production.up.railway.app/api",
 });
 
 export const fetchArticles = (
@@ -61,7 +59,6 @@ export const updateCommentVotes = (comment_id, voteChange) => {
 };
 
 export const getUserByUsername = (username) => {
-  console.log(username);
   return newsApi.get(`/users/${username}`);
 };
 

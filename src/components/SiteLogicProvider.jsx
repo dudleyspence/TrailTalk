@@ -10,7 +10,7 @@ import AddArticle from "./AddArticle";
 
 export default function SiteLogicProvider() {
   const { userLoggedIn, setUserLoggedIn } = useContext(UserContext);
-  const [isNotLoading, setIsNotLoading] = useState(false);
+  const [isNotLoading, setIsNotLoading] = useState(true);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("userLoggedIn");

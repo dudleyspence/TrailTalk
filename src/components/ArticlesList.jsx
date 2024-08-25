@@ -34,6 +34,7 @@ export default function ArticlesList({
 
   useEffect(() => {
     setIsLoading(true);
+    console.log(username);
     fetchArticles(topic, sortBy, order, pageNo, articlesPerPage, username)
       .then(({ data }) => {
         setTotalResults(data.total);
