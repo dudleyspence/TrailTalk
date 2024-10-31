@@ -13,6 +13,7 @@
   align-items: center;
   flex-direction: column;
   height: 30vh;
+  width: 60vw;
   background-color: var(--login-color);
   padding: 30px;
   color: var(--text-color);
@@ -51,4 +52,12 @@
 
 .error-message {
   text-align: center;
+}
+
+.login-button {
+  padding: 10px;
+  font-size: 12px;
+  width: 100px;
+  height: 40px;
+  text-wrap: nowrap;
 }
