@@ -98,11 +98,6 @@ Access the app at `http://localhost:3000` in your browser.
 
 ----------
 
-### **Related Projects**
-<div width="100%" align="center">
-<a href="https://github.com/dudleyspence/TrailTalk" align="left"><img align="left" width="45%" src="https://github-readme-stats.vercel.app/api/pin/?username=dudleyspence&repo=TrailTalk&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=0f172a&hide_border=true&locale=en" /></a><div/>
-
-
 ## **Future Enhancements**
 
 -   **Drag and drop image uploads**: For both Articles and Profile Avatars the user will have the ability to drag and drop files instead of the currrent image URL.
@@ -120,3 +115,9 @@ Contributions are welcome! Feel free to fork the repository and submit pull requ
 ## **License**
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+----------
+
+### **Related Projects**
+<div width="100%" align="center">
+<a href="https://github.com/dudleyspence/TrailTalk" align="left"><img align="left" width="45%" src="https://github-readme-stats.vercel.app/api/pin/?username=dudleyspence&repo=TrailTalk&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=0f172a&hide_border=true&locale=en" /></a><div/>
