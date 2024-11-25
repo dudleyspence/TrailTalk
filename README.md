@@ -1,55 +1,112 @@
-# Trail Talk
 
-**Trail Talk** is a web-based application designed for outdoor enthusiasts to explore articles on various hiking topics, share comments, votes to increase an articles "altitude points" and manage user profiles. The application provides a seamless and interactive user experience with features like topic-based article sorting, pagination, adding and deleting articles.
+# **Trail Talk**
 
-## Features
+**Description**  
+Trail Talk is a web-based application crafted for outdoor enthusiasts to delve into hiking-related articles, share their thoughts through comments, vote to increase an article's "altitude points," and manage personalised user profiles. This platform ensures an engaging experience with features like dynamic article sorting, pagination, and a robust commenting system.
 
-- **User Authentication**: Login functionality with username validation (no password for ease of demonstration).
-- **Dynamic Article Sorting**: Sort articles by date, popularity, or number of comments.
-- **Profile Page**: A profile page for the user showing username, avatar and a users article posts with the option to delete articles.
-- **Topic Navigation**: Explore articles by selecting different topics.
-- **Commenting System**: Users can add comments to articles and interact with others. A user can also delete the comments that they posted.
-- **Pagination Controls**: Efficient navigation through articles and comments.
-- **Error Handling**: User-friendly error messages and validation prompts.
+----------
 
-## Using the Web App
+## **Features**
 
-To use **Trail Talk**, simply visit the deployed application in your web browser. You can explore articles, select topics, and interact with the community by adding comments. The web app is responsive and accessible across various devices.
+-   **Dynamic Article Sorting**: Effortlessly sort articles by date, popularity, or number of comments.
+-   **Profile Page**: View user details, including username, avatar, and a list of posted articles with options to delete them.
+-   **Voting System**: Upvote and downvote on users articles and comments. Votes utilise optimistic rendering for a smooth voting experience.
+-   **Topic Navigation**: Browse articles by selecting topics of interest.
+-   **Commenting System**: Add comments to articles, engage with others, and manage your comments (delete functionality available).
+-   **Pagination Controls**: Navigate seamlessly through articles and comments with efficient pagination.
+-   **Error Handling**: Friendly error messages and validation prompts for smooth interaction.
+-   **Login**: The code includes basic login functionality but i have subsituted this for a demo user button for ease of demonstration.
 
-Login using the username: hikeguru
+----------
 
-### Access the Web App
+## **Technologies Used**
 
-- **URL**: [https://trailtalk-im36.onrender.com/](https://trailtalk-im36.onrender.com/)
+-   **Frontend**: React.js, CSS
+-   **Backend**: Node.js, Express.js
+-   **Database**: PostgreSQL
+-   **Hosting**: Hosted on Railway [TrailTalk](https://trailtalk-production.up.railway.app/)
 
-## For Developers
+----------
 
-If you are a developer and wish to contribute or run the project locally, follow the instructions below.
+## **How to Use**
 
-### Prerequisites
+### **Using the Web App**
 
-- **Node.js** (v12.x or higher)
-- **npm** (v6.x or higher)
+1.  Visit the deployed application on your web browser.
+2.  Log in by simply pressing the demo user login button.
+3.  Explore hiking articles, sort them by various criteria, and interact with the community by adding or deleting comments.
+4.  Navigate to your profile to view and manage your articles and comments.
 
-### Installation
+Access the web app here:  
+**URL**: [https://trailtalk-im36.onrender.com/](https://trailtalk-im36.onrender.com/)
 
-Clone the repository and install the dependencies:
+----------
 
-```
-git clone https://github.com/dudleyspence/TrailTalk.git
-cd TrailTalk
-npm install
-```
+## **Code Overview**
 
-### Running the Project Locally
+### **Frontend**
 
-To start the development server, run:
+-   **React Components**: Modular structure for dynamic rendering of articles, topics, and user profiles.
+-   **State Management**: Utilises React's state and props for seamless navigation and updates.
 
-```
-npm install
-npm run dev
-```
+### **Backend**
 
-## License
+-   **Express.js API**: Manages requests for articles, comments, and user data.
+-   **Database Integration**: PostgreSQL handles data storage and retrieval with efficient queries.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### **Error Handling**
+-   Comprehensive error management for a user-friendly experience during login, article interactions, and commenting.
+
+----------
+
+## **For Developers**
+
+If you wish to contribute or run the project locally, follow these steps:
+
+### **Prerequisites**
+
+-   **Node.js** (v12.x or higher)
+-   **npm** (v6.x or higher)
+
+### **Installation**
+
+1.  Clone the repository:
+    
+    `git clone https://github.com/dudleyspence/TrailTalk.git` 
+    
+2.  Navigate to the project folder:
+    
+    `cd TrailTalk` 
+    
+3.  Install the dependencies:
+    
+    `npm install` 
+    
+
+### **Running the Project Locally**
+
+Start the development server with the following command:
+
+`npm run dev` 
+
+Access the app at `http://localhost:3000` in your browser.
+
+----------
+
+## **Future Enhancements**
+
+-   **Drag and drop image uploads**: For both Articles and Profile Avatars the user will have the ability to drag and drop files instead of the currrent image URL.
+-   **Enhanced Article Interactions**: Add features like article bookmarking or sharing.
+-   **Improved UI/UX**: Refine styling for a more immersive user experience.
+
+----------
+
+## **Contributing**
+
+Contributions are welcome! Feel free to fork the repository and submit pull requests with your improvements.
+
+----------
+
+## **License**
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
