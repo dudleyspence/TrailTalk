@@ -85,6 +85,12 @@ If you wish to contribute or run the project locally, follow these steps:
 
 ### **Running the Project Locally**
 
+This is the client-side repository for the Be News App.
+
+## Related Projects
+- [Backend API](https://github.com/dudleyspence/be-news-api)  
+Ensure the backend is running locally at `http://localhost:5000` or on the deployed server before starting the frontend.
+
 Start the development server with the following command:
 
 `npm run dev` 
