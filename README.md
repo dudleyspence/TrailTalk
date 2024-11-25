@@ -87,8 +87,7 @@ If you wish to contribute or run the project locally, follow these steps:
 
 This is the client-side repository for the Be News App.
 
-## Related Projects
-- [Backend API](https://github.com/dudleyspence/be-news-api)  
+[Backend API](https://github.com/dudleyspence/be-news-api)  
 Ensure the backend is running locally at `http://localhost:5000` or on the deployed server before starting the frontend.
 
 Start the development server with the following command:
@@ -98,6 +97,9 @@ Start the development server with the following command:
 Access the app at `http://localhost:3000` in your browser.
 
 ----------
+
+## Related Projects
+
 
 ## **Future Enhancements**
 
