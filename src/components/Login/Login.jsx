@@ -4,15 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { getUserByUsername } from "../../../api";
 
 export default function Login() {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("hikeguru");
   const [isError, setIsError] = useState(false);
   const { setUserLoggedIn } = useContext(UserContext);
   let navigate = useNavigate();
 
-  function handleLoginChange(event) {
-    const usernameInput = event.target.value.toLowerCase();
-    setUsername(usernameInput);
-  }
+  // function handleLoginChange(event) {
+  //   const usernameInput = event.target.value.toLowerCase();
+  //   setUsername(usernameInput);
+  // }
 
   function handleLoginClick(event) {
     event.preventDefault();
@@ -31,7 +31,7 @@ export default function Login() {
   return (
     <section className="loginPage">
       <form onSubmit={handleLoginClick}>
-        <label htmlFor="username">Enter your username:</label>
+        {/* <label htmlFor="username">Enter your username:</label>
         <p>(Demo username - hikeguru)</p>
         <input
           name="username"
@@ -46,7 +46,8 @@ export default function Login() {
             <p>please try again</p>
           </div>
         )}
-        <button className="styled-button">Login</button>
+        <button className="styled-button">Login</button> */}
+        <button className="styled-button login-button">DEMO LOGIN</button>
       </form>
     </section>
   );

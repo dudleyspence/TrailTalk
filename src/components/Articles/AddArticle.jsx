@@ -2,7 +2,11 @@ import { useState, useEffect, useContext } from "react";
 import { getTopics } from "../../../api";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD:src/components/Articles/AddArticle.jsx
 import { addArticle, sendImage } from "../../../api";
+=======
+import { addArticle, sendImage } from "../../api";
+>>>>>>> a572cc3737869d58859fc0babae60ca73f75cf5f:src/components/AddArticle.jsx
 
 export default function AddArticle() {
   const [isError, setIsError] = useState(false);
