@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { deleteCommentByCommentId } from "../../api";
-import binImg from "../assets/deletebin.png";
+import { deleteCommentByCommentId } from "../../../api";
+import binImg from "../../assets/deletebin.png";
 
 export default function DeleteComment({ comments, setComments, comment_id }) {
   const [isError, setIsError] = useState(false);

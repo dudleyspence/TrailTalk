@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { deleteArticleById } from "../../api";
-import binImg from "../assets/deletebin.png";
+import { deleteArticleById } from "../../../api";
+import binImg from "../../assets/deletebin.png";
 
 export default function DeleteArticle({
   articlesList,

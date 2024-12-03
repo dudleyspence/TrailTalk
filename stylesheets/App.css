@@ -2,7 +2,7 @@
 
 :root {
   --background-color: rgb(244, 241, 222, 0.2);
-  --Header-color: #92a376;
+  --TrailGreen: #92a376;
   --primary-colour: #f4f1de;
   --comment-section: rgb(146, 163, 118, 0.2);
   --comment-single: rgb(146, 163, 118, 0.4);
@@ -28,4 +28,12 @@ body {
   padding-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.LottieLoading {
+  height: 70vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

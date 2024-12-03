@@ -1,6 +1,6 @@
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 import { useContext } from "react";
-import ArticlesList from "./ArticlesList";
+import ArticlesList from "../Articles/ArticlesList";
 
 export default function ProfilePage() {
   const { userLoggedIn } = useContext(UserContext);

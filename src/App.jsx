@@ -1,15 +1,14 @@
-import { useState } from "react";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import SiteLogicProvider from "./components/SiteLogicProvider";
 import { UserProvider } from "./context/UserContext.jsx";
-import Footer from "./components/Footer";
-import "../stylesheets/index.css";
+import Footer from "./components/Footer/Footer";
+import { StickyNavbar } from "./components/Header/Navbar.jsx";
 
 function App() {
   return (
     <div id="page-container">
       <UserProvider>
-        <Header />
+        <StickyNavbar />
         <SiteLogicProvider />
         <Footer />
       </UserProvider>

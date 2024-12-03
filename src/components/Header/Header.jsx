@@ -1,5 +1,5 @@
 import MobileNav from "./MobileNav";
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +16,7 @@ export default function Header() {
   }
 
   return userLoggedIn ? (
-    <header>
+    <header className="bg-TrailGreen">
       <div className="leftHeader">
         <MobileNav />
         <h1 onClick={handleTitleClick}>Trail Talk</h1>

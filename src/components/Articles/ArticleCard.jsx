@@ -1,7 +1,7 @@
-import VotesControl from "./VotesControl";
+import VotesControl from "../Controls/VotesControl";
 import CreatedTime from "./CreatedTime";
 import { Link } from "react-router-dom";
-import { updateArticleVotes } from "../../api";
+import { updateArticleVotes } from "../../../api";
 
 export default function ArticleCard({ article, deleteComponent = undefined }) {
   return (

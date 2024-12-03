@@ -1,12 +1,12 @@
 import { useState, useContext, useEffect } from "react";
-import Login from "./Login";
-import ArticlesList from "./ArticlesList";
+import Login from "./Login/Login";
+import ArticlesList from "./Articles/ArticlesList";
 import { Routes, Route } from "react-router-dom";
-import SingleArticle from "./SingleArticle";
+import SingleArticle from "./Articles/SingleArticle";
 import { UserContext } from "../context/UserContext";
 import { Navigate } from "react-router-dom";
-import ProfilePage from "./ProfilePage";
-import AddArticle from "./AddArticle";
+import ProfilePage from "./Profile/ProfilePage";
+import AddArticle from "./Articles/AddArticle";
 
 export default function SiteLogicProvider() {
   const { userLoggedIn, setUserLoggedIn } = useContext(UserContext);
@@ -18,7 +18,7 @@ export default function SiteLogicProvider() {
       setUserLoggedIn(JSON.parse(storedUser));
     }
     setIsNotLoading(true);
-  }, []);
+  }, [setUserLoggedIn]);
 
   useEffect(() => {
     if (userLoggedIn) {

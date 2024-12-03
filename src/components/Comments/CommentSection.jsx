@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { fetchCommentsByArticleId } from "../../api";
+import { fetchCommentsByArticleId } from "../../../api";
 
 import AddComment from "./AddComment";
-import ListControls from "./ListControls";
+import ListControls from "../Controls/ListControls";
 
-import SingleComment from "./SingleComment";
-import PageControls from "./PageControls";
+import SingleComment from "../Comments/SingleComment";
+import PageControls from "../Controls/PageControls";
 
 export default function CommentSections({ article_id, comment_count }) {
   const [comments, setComments] = useState([]);

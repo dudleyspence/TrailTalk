@@ -1,6 +1,6 @@
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 import { useContext, useState } from "react";
-import { addArticleCommentByUsername } from "../../api";
+import { addArticleCommentByUsername } from "../../../api";
 
 export default function AddComment({ article_id, comments, setComments }) {
   const { userLoggedIn, setUserLoggedIn } = useContext(UserContext);

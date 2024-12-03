@@ -1,12 +1,11 @@
-header {
+/* header {
   height: 15vh;
-  background-color: var(--Header-color);
   display: flex;
   align-items: center;
   padding: 0 30px;
   color: var(--title-color);
   justify-content: space-between;
-}
+} */
 
 .leftHeader {
   display: flex;

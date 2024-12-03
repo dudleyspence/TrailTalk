@@ -12,3 +12,6 @@
 @import "../stylesheets/footer.css";
 @import "../stylesheets/addArticle.css";
 @import "../stylesheets/page-size.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

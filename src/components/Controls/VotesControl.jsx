@@ -1,8 +1,8 @@
 import { useState } from "react";
-import mountainUp from "../assets/mountain-up.png";
-import mountainDown from "../assets/mountain-down.png";
-import arrowDown from "../assets/arrow-down.png";
-import arrowUp from "../assets/arrow-up.png";
+import mountainUp from "../../assets/mountain-up.png";
+import mountainDown from "../../assets/mountain-down.png";
+import arrowDown from "../../assets/arrow-down.png";
+import arrowUp from "../../assets/arrow-up.png";
 
 export default function VotesControl({
   id,

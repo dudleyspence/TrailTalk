@@ -1,5 +1,5 @@
-import nextImg from "../assets/next.png";
-import previousImg from "../assets/previous.png";
+import nextImg from "../../assets/next.png";
+import previousImg from "../../assets/previous.png";
 
 export default function PageControls({
   pageNo,

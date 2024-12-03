@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import hamburgerIcon from "../assets/Hamburger-icon.png";
-import { UserContext } from "../context/UserContext";
+import hamburgerIcon from "../../assets/Hamburger-icon.png";
+import { UserContext } from "../../context/UserContext";
 import { useContext } from "react";
 
 export default function MobileNav() {

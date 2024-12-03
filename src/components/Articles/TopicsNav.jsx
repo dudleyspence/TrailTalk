@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getTopics } from "../../api";
+import { getTopics } from "../../../api";
 
 export default function TopicsNav() {
   const [isError, setIsError] = useState(false);

@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-import { getTopics } from "../../api";
-import { UserContext } from "../context/UserContext";
+import { getTopics } from "../../../api";
+import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
-import { addArticle } from "../../api";
+import { addArticle, sendImage } from "../../../api";
 
 export default function AddArticle() {
   const [isError, setIsError] = useState(false);
@@ -14,6 +14,7 @@ export default function AddArticle() {
   const [articleImg, setArticleImg] = useState("");
   const { userLoggedIn } = useContext(UserContext);
   const navigate = useNavigate();
+  const [file, setFile] = useState();
 
   function handleArticleBodyChange(event) {
     setArticleBody(event.target.value);
@@ -31,25 +32,40 @@ export default function AddArticle() {
     setArticleTopic(event.target.value);
   }
 
+  function handleFileChange(event) {
+    setFile(event.target.files[0]);
+  }
+
   function handlePostArticle(event) {
     event.preventDefault();
-    const article = {
-      author: userLoggedIn.username,
-      title: articleTitle,
-      body: articleBody,
-      topic: articleTopic,
-      article_img_url: articleImg,
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("fileName", file.name);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
     };
-    addArticle(article)
-      .then(({ data }) => {
-        console.log(data);
-        setIsLoading(false);
-        navigate("/");
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsError(true);
-      });
+    sendImage(formData, config).then((articleImg) => {
+      const article = {
+        author: userLoggedIn.username,
+        title: articleTitle,
+        body: articleBody,
+        topic: articleTopic,
+        article_img_url: articleImg,
+      };
+      addArticle(article)
+        .then(({ data }) => {
+          console.log(data);
+          setIsLoading(false);
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log(err);
+          setIsError(true);
+        });
+    });
   }
 
   useEffect(() => {
@@ -87,10 +103,10 @@ export default function AddArticle() {
         <label htmlFor="img">
           Article Image URL:
           <input
-            type="url"
+            type="file"
             name="img"
             id="img"
-            onChange={handleArticleImgChange}
+            onChange={handleFileChange}
             required
           />
         </label>
@@ -125,7 +141,7 @@ export default function AddArticle() {
         <button
           type="submit"
           onClick={handlePostArticle}
-          className="styled-button"
+          className="styled-button "
           disabled={
             articleBody === "" || articleTitle === "" || articleImg === ""
           }

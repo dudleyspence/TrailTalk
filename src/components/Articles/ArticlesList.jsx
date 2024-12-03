@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { fetchArticles } from "../../api";
+import { fetchArticles } from "../../../api";
 import ArticleCard from "./ArticleCard";
 import TopicsNav from "./TopicsNav";
-import ListControls from "./ListControls";
-import PageControls from "./PageControls";
+import ListControls from "../Controls/ListControls";
+import PageControls from "../Controls/PageControls";
 import DeleteArticle from "./deleteArticle";
+import LoadingAnimation from "../UI/LoadingAnimation";
+import { Button } from "@material-tailwind/react";
 
 export default function ArticlesList({
   username = undefined,
@@ -58,13 +60,17 @@ export default function ArticlesList({
   return isError ? (
     "Error"
   ) : isLoading ? (
-    <h2>is loading...</h2>
+    <LoadingAnimation />
   ) : (
     <section className="section-container">
-      <div className="addArticleButton">
-        <button className="styled-button" onClick={handleAddArticle}>
+      <div>
+        <Button
+          size="sm"
+          className="text-[10px] bg-TrailGreen"
+          onClick={handleAddArticle}
+        >
           Add Article
-        </button>
+        </Button>
       </div>
 
       {notProfilePage && <TopicsNav />}

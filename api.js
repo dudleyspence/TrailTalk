@@ -90,3 +90,7 @@ export const deleteArticleById = (article_id) => {
   console.log(article_id);
   return newsApi.delete(`/articles/${article_id}`);
 };
+
+export const sendImage = (formData, config) => {
+  newsApi.post("/images", formData, config);
+};

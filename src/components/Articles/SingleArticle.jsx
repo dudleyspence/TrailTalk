@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchArticleById } from "../../api";
-import VotesControl from "./VotesControl";
-import CommentSection from "./CommentSection";
-import { updateArticleVotes } from "../../api";
+import { fetchArticleById } from "../../../api";
+import VotesControl from "../Controls/VotesControl";
+import CommentSection from "../Comments/CommentSection";
+import { updateArticleVotes } from "../../../api";
 import CreatedTime from "./CreatedTime";
 
 export default function SingleArticle() {

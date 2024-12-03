@@ -1,10 +1,10 @@
 import React from "react";
 import DeleteComment from "./DeleteComment";
-import CreatedTime from "./CreatedTime";
-import VotesControl from "./VotesControl";
-import { UserContext } from "../context/UserContext";
+import CreatedTime from "../Articles/CreatedTime";
+import VotesControl from "../Controls/VotesControl";
+import { UserContext } from "../../context/UserContext";
 import { useContext } from "react";
-import { updateCommentVotes } from "../../api";
+import { updateCommentVotes } from "../../../api";
 
 export default function SingleComment({ comment, comments, setComments }) {
   const { userLoggedIn } = useContext(UserContext);
