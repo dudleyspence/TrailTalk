@@ -61,7 +61,7 @@ export const getUserByUsername = (username) => {
   return newsApi.get(`/users/${username}`);
 };
 
-export const addArticleCommentByUsername = (article_id, username, body) => {
+export const addComment = (article_id, username, body) => {
   const comment = {
     username: username,
     body: body,
