@@ -22,9 +22,9 @@ const useArticles = ({
       articlesPerPage,
       (username = null)
     )
-      .then(({ data }) => {
-        setTotal(data.total);
-        setArticles(data.articles);
+      .then(({ total, articles }) => {
+        setTotal(total);
+        setArticles(articles);
         setLoading(false);
       })
       .catch((err) => {

@@ -24,7 +24,7 @@ export const fetchArticles = (
   if (username) {
     queries.params["author"] = username;
   }
-  return newsApi.get("/articles", queries);
+  return newsApi.get("/articles", queries).data;
 };
 
 export const fetchArticleById = (article_id) => {
@@ -35,7 +35,7 @@ export const updateArticleVotes = (article_id, voteChange) => {
   return newsApi.patch(`/articles/${article_id}`, { inc_votes: voteChange });
 };
 
-export const fetchCommentsByArticleId = (
+export const fetchComments = (
   article_id,
   pageNo,
   commentsPerPage,
@@ -50,7 +50,7 @@ export const fetchCommentsByArticleId = (
       order: order,
     },
   };
-  return newsApi.get(`/articles/${article_id}/comments`, queries);
+  return newsApi.get(`/articles/${article_id}/comments`, queries).data;
 };
 
 export const updateCommentVotes = (comment_id, voteChange) => {
