@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { addComment } from "../../api";
 
-const useAddComment = ({
+const useAddArticle = ({
   article_id,
   username,
   body,

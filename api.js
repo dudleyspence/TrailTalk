@@ -24,7 +24,7 @@ export const fetchArticles = (
   if (username) {
     queries.params["author"] = username;
   }
-  return newsApi.get("/articles", queries).data;
+  return newsApi.get("/articles", queries);
 };
 
 export const fetchArticleById = (article_id) => {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { fetchArticles } from "../../api";
 
 const useArticles = ({
   topic,
@@ -22,9 +23,9 @@ const useArticles = ({
       articlesPerPage,
       (username = null)
     )
-      .then(({ total, articles }) => {
-        setTotal(total);
-        setArticles(articles);
+      .then(({ data }) => {
+        setTotal(data.total);
+        setArticles(data.articles);
         setLoading(false);
       })
       .catch((err) => {
@@ -32,7 +33,7 @@ const useArticles = ({
         setError(true);
         setLoading(false);
       });
-  }, []);
+  }, [topic, pageNo, articlesPerPage, sortBy, order, username]);
 
   return { articles, total, loading, error };
 };
