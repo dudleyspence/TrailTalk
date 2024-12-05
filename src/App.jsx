@@ -5,7 +5,9 @@ function App() {
   return (
     <div>
       {/* <StickyNavbar /> */}
-      <AppRoutes />
+      <div className="px-[10vw] flex justify-center">
+        <AppRoutes />
+      </div>
       <Footer />
     </div>
   );

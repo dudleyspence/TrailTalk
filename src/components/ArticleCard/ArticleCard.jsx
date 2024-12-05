@@ -14,55 +14,63 @@ import ArticleVotesControl from "../VotesControl/ArticleVotesControl";
 
 export function ArticleCard({ article, deleteComponent = undefined }) {
   return (
-    <Card className="w-full h-full overflow-hidden flex flex-col justify-between">
+    <Card className="w-full overflow-hidden relative flex flex-col justify-between">
       <CardHeader
         floated={false}
         shadow={false}
         color="transparent"
-        className="m-0 rounded-none"
+        className="h-2/3 m-0 relative shrink-0 rounded-none overflow-hidden"
       >
         <img
           src={article.article_img_url}
           alt="image relating to the article"
-          className="w-full"
+          className="w-full h-full object-cover overflow-hidden"
         />
       </CardHeader>
-      <CardBody>
-        <div className="flex flex-row justify-start items-center gap-4">
-          <Tooltip content="Tania Andrew">
-            <Avatar
-              size="sm"
-              variant="circular"
-              alt="tania andrew"
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-              className="border-2 border-white hover:z-10"
-            />
-          </Tooltip>
+      <CardBody className="flex flex-col justify-between items-start h-1/3 gap-4">
+        <div className="flex flex-row gap-3 w-full justify-between">
           <Link to={`/article/${article.article_id}`}>
             <Typography variant="h4" color="blue-gray">
               {article.title}
             </Typography>
           </Link>
+          {article.votes > 15 && (
+            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
+              POPULAR
+            </div>
+          )}
+        </div>
+        <div className="flex flex-row w-full justify-between">
+          <div class="flex items-center">
+            <Avatar
+              size="lg"
+              variant="circular"
+              alt={article.author}
+              src={article.author_avatar_url}
+              className="border-2 border-white hover:z-10"
+            />
+            <div className="flex flex-col ml-3 text-sm">
+              <span className="text-slate-800 text-md font-semibold">
+                {article.author}
+              </span>
+              <CreatedTime timeString={article.created_at} />
+            </div>
+          </div>
+          <div className="flex flex-col items-center gap-4">
+            <ArticleVotesControl
+              id={article.article_id}
+              currVotes={article.votes}
+              updateVotes={updateArticleVotes}
+            />
+            <Link
+              className="hover:underline"
+              to={`/article/${article.article_id}#commentSection`}
+            >
+              <Typography>Comments: {article.comment_count}</Typography>
+            </Link>
+          </div>
         </div>
       </CardBody>
-      <CardFooter className="flex justify-self-end flex-row items-end justify-between">
-        <div className="flex flex-col items-center gap-4">
-          <ArticleVotesControl
-            id={article.article_id}
-            currVotes={article.votes}
-            updateVotes={updateArticleVotes}
-          />
-          <Link
-            className="hover:underline"
-            to={`/article/${article.article_id}#commentSection`}
-          >
-            <p>Comments: {article.comment_count}</p>
-          </Link>
-        </div>
-        <Typography className="font-normal">
-          <CreatedTime timeString={article.created_at} />
-        </Typography>
-      </CardFooter>
     </Card>
   );
 }
