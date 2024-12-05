@@ -2,10 +2,8 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   Typography,
   Avatar,
-  Tooltip,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import CreatedTime from "../Utils/CreatedTime";
@@ -14,12 +12,12 @@ import ArticleVotesControl from "../VotesControl/ArticleVotesControl";
 
 export function ArticleCard({ article, deleteComponent = undefined }) {
   return (
-    <Card className="w-full overflow-hidden relative flex flex-col justify-between">
+    <Card className="w-full h-full min-h-[500px] lg:min-h-[600px] shadow-lg hover:shadow-2xl overflow-hidden relative flex flex-col justify-between cursor-pointer">
       <CardHeader
         floated={false}
         shadow={false}
         color="transparent"
-        className="h-2/3 m-0 relative shrink-0 rounded-none overflow-hidden"
+        className="h-3/5 md:h-2/3 m-0 relative shrink-0 rounded-none overflow-hidden"
       >
         <img
           src={article.article_img_url}
@@ -27,27 +25,26 @@ export function ArticleCard({ article, deleteComponent = undefined }) {
           className="w-full h-full object-cover overflow-hidden"
         />
       </CardHeader>
-      <CardBody className="flex flex-col justify-between items-start h-1/3 gap-4">
+      <CardBody className="p-4 md:p-6 flex flex-col justify-between items-start h-2/5 md:h-1/3 gap-4">
         <div className="flex flex-row gap-3 w-full justify-between">
           <Link to={`/article/${article.article_id}`}>
-            <Typography variant="h4" color="blue-gray">
+            <Typography className="text-md sm:text-2xl font-bold">
               {article.title}
             </Typography>
           </Link>
           {article.votes > 15 && (
-            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
+            <div className="mb-2 rounded-full bg-cyan-600 py-1 h-fit px-3 border border-transparent text-xs text-white transition-all shadow-sm w-fit text-center">
               POPULAR
             </div>
           )}
         </div>
         <div className="flex flex-row w-full justify-between">
-          <div class="flex items-center">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center">
             <Avatar
-              size="lg"
               variant="circular"
               alt={article.author}
               src={article.author_avatar_url}
-              className="border-2 border-white hover:z-10"
+              className="h-[38px] w-[38px] sm:h-[58px] sm:w-[58px] border-2 border-white hover:z-10"
             />
             <div className="flex flex-col ml-3 text-sm">
               <span className="text-slate-800 text-md font-semibold">
@@ -66,7 +63,9 @@ export function ArticleCard({ article, deleteComponent = undefined }) {
               className="hover:underline"
               to={`/article/${article.article_id}#commentSection`}
             >
-              <Typography>Comments: {article.comment_count}</Typography>
+              <Typography className="text-sm sm:text-md lg:text-lg">
+                Comments: {article.comment_count}
+              </Typography>
             </Link>
           </div>
         </div>

@@ -28,7 +28,7 @@ export default function CreatedTime({ timeString, isTimeFromNow = true }) {
 
   return (
     <div className="dateAndTime">
-      <p className="text-lg">{formattedDate}</p>
+      <p className="text-sm md:text-lg">{formattedDate}</p>
       {!isTimeFromNow && <p>{formattedTime}</p>}
     </div>
   );

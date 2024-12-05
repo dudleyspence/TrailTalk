@@ -1,7 +1,7 @@
 import React from "react";
 import useArticles from "../../hooks/useArticles";
 import { ArticleCard } from "../ArticleCard/ArticleCard";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import PaginationControls from "../Pagination/PaginationControls";
 import LoadingAnimation from "../UI/Lotties/Loading/LoadingAnimation";
@@ -21,10 +21,9 @@ export default function ArticleList() {
     sortBy,
     order,
   });
-  console.log(articles);
 
   return (
-    <div className="w-full flex flex-col items-center gap-5 py-5">
+    <div className="w-full flex flex-col items-center gap-5 py-8">
       {loading && <LoadingAnimation />}
       {error && <p>Error fetching articles</p>}
       <ListControls
@@ -38,9 +37,11 @@ export default function ArticleList() {
         setElementsPerPage={setArticlesPerPage}
         canSortByComments={true}
       />
-      <div className="w-full grid grid-cols-2 gap-10">
+      <div className="w-full grid grid-cols-1 xl:grid-cols-2 items-stretch gap-10">
         {articles.map((article) => (
-          <ArticleCard key={article.article_id} article={article} />
+          <Link to={`/article/${article.article_id}`}>
+            <ArticleCard key={article.article_id} article={article} />
+          </Link>
         ))}
       </div>
       <PaginationControls

@@ -15,14 +15,7 @@ const useArticles = ({
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchArticles(
-      topic,
-      sortBy,
-      order,
-      pageNo,
-      articlesPerPage,
-      (username = null)
-    )
+    fetchArticles(topic, sortBy, order, pageNo, articlesPerPage, username)
       .then(({ data }) => {
         setTotal(data.total);
         setArticles(data.articles);

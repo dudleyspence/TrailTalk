@@ -10,10 +10,13 @@ export default function ArticleVotesControl({ id, currVotes, updateVotes }) {
   });
 
   return (
-    <div className="article-votes">
-      <p className="current-altitude-votes">Altitude Points: {votes}m</p>
+    <div className="flex flex-col justify-center items-center">
+      <p className="text-sm md:text-md">Altitude Points: {votes}m</p>
       <div className="flex flex-row gap-2">
-        <button onClick={() => handleVote("upvote")} className="h-10 w-14">
+        <button
+          onClick={() => handleVote("upvote")}
+          className="h-8 w-12 md:h-10 md:w-14"
+        >
           {console.log(userVote)}
           <img
             className={`h-full w-full p-1 rounded-lg ${
@@ -25,7 +28,7 @@ export default function ArticleVotesControl({ id, currVotes, updateVotes }) {
         </button>
         <button
           onClick={() => handleVote("downvote")}
-          className="h-10 w-14"
+          className="h-8 w-12 md:h-10 md:w-14"
           disabled={votes === 0}
         >
           <img

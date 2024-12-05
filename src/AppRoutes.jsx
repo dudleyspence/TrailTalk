@@ -9,7 +9,7 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<MainPage />} />
-      <Route path="/topic/:topic_id" element={<MainPage />} />
+      <Route path="/topics/:topic" element={<MainPage />} />
       <Route path="/addarticle" element={<NewArticlePage />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/article/:article_id" element={<ArticlePage />} />

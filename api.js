@@ -10,7 +10,7 @@ export const fetchArticles = (
   order,
   pageNo,
   articlesPerPage,
-  username
+  username = null
 ) => {
   const queries = {
     params: {
