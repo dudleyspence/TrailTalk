@@ -3,7 +3,7 @@ import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <div>
+    <div className="h-screen">
       {/* <StickyNavbar /> */}
       <div className="px-[6vw] md:px-[10vw] flex justify-center">
         <AppRoutes />

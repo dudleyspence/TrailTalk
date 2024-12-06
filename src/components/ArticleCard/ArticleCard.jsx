@@ -27,11 +27,9 @@ export function ArticleCard({ article, deleteComponent = undefined }) {
       </CardHeader>
       <CardBody className="p-4 md:p-6 flex flex-col justify-between items-start h-2/5 md:h-1/3 gap-4">
         <div className="flex flex-row gap-3 w-full justify-between">
-          <Link to={`/article/${article.article_id}`}>
-            <Typography className="text-md sm:text-2xl font-bold">
-              {article.title}
-            </Typography>
-          </Link>
+          <Typography className="text-md sm:text-2xl font-bold">
+            {article.title}
+          </Typography>
           {article.votes > 15 && (
             <div className="mb-2 rounded-full bg-cyan-600 py-1 h-fit px-3 border border-transparent text-xs text-white transition-all shadow-sm w-fit text-center">
               POPULAR
@@ -46,7 +44,7 @@ export function ArticleCard({ article, deleteComponent = undefined }) {
               src={article.author_avatar_url}
               className="h-[38px] w-[38px] sm:h-[58px] sm:w-[58px] border-2 border-white hover:z-10"
             />
-            <div className="flex flex-col ml-3 text-sm">
+            <div className="flex flex-col text-sm">
               <span className="text-slate-800 text-md font-semibold">
                 {article.author}
               </span>
@@ -59,14 +57,10 @@ export function ArticleCard({ article, deleteComponent = undefined }) {
               currVotes={article.votes}
               updateVotes={updateArticleVotes}
             />
-            <Link
-              className="hover:underline"
-              to={`/article/${article.article_id}#commentSection`}
-            >
-              <Typography className="text-sm sm:text-md lg:text-lg">
-                Comments: {article.comment_count}
-              </Typography>
-            </Link>
+
+            <Typography className="text-sm sm:text-md lg:text-lg">
+              Comments: {article.comment_count}
+            </Typography>
           </div>
         </div>
       </CardBody>

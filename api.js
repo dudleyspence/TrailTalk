@@ -57,8 +57,8 @@ export const updateCommentVotes = (comment_id, voteChange) => {
   return newsApi.patch(`/comments/${comment_id}`, { inc_votes: voteChange });
 };
 
-export const getUserByUsername = (username) => {
-  return newsApi.get(`/users/${username}`);
+export const fetchUserByFirebaseUID = (firebase_uid) => {
+  return newsApi.get(`/users/${firebase_uid}`);
 };
 
 export const addComment = (article_id, username, body) => {
