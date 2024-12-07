@@ -19,17 +19,21 @@ export function ArticleCard({ article, deleteComponent = undefined }) {
         color="transparent"
         className="h-3/5 md:h-2/3 m-0 relative shrink-0 rounded-none overflow-hidden"
       >
-        <img
-          src={article.article_img_url}
-          alt="image relating to the article"
-          className="w-full h-full object-cover overflow-hidden"
-        />
+        <Link to={`/article/${article.article_id}`}>
+          <img
+            src={article.article_img_url}
+            alt="image relating to the article"
+            className="w-full h-full object-cover overflow-hidden"
+          />
+        </Link>
       </CardHeader>
       <CardBody className="p-4 md:p-6 flex flex-col justify-between items-start h-2/5 md:h-1/3 gap-4">
         <div className="flex flex-row gap-3 w-full justify-between">
-          <Typography className="text-md sm:text-2xl font-bold">
-            {article.title}
-          </Typography>
+          <Link to={`/article/${article.article_id}`}>
+            <Typography className="hover:underline underline-offset-8 text-md sm:text-2xl font-bold">
+              {article.title}
+            </Typography>
+          </Link>
           {article.votes > 15 && (
             <div className="mb-2 rounded-full bg-cyan-600 py-1 h-fit px-3 border border-transparent text-xs text-white transition-all shadow-sm w-fit text-center">
               POPULAR

@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
     setLoading(false);
   }, []);
 
-  function handleSignOut() {
+  function signOutUser() {
     signOut(auth)
       .then(() => {
         setUserLoggedIn(false);
@@ -29,7 +29,7 @@ export function AuthProvider({ children }) {
   const value = {
     userLoggedIn,
     setUserLoggedIn,
-    handleSignOut,
+    signOutUser,
     loading,
   };
 

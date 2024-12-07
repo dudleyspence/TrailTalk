@@ -8,6 +8,7 @@ const useVotes = ({ id, currVotes, updateVotes }) => {
     const initialUserVote = userVote;
     let voteChange = 0;
 
+    // Determine vote change
     if (voteType === "upvote") {
       if (userVote === 1) {
         // Undo upvote
@@ -38,12 +39,14 @@ const useVotes = ({ id, currVotes, updateVotes }) => {
       }
     }
 
+    // Optimistically update the votes
     setVotes(votes + voteChange);
 
+    // Call the updateVotes function (e.g., API call)
     updateVotes(id, userVote).catch((err) => {
       console.log(err);
-      setVotes(votes - userVote);
-      setUserVote(initialUserVote);
+      setVotes(votes - userVote); // Revert to previous votes if error
+      setUserVote(initialUserVote); // Revert to previous user vote
     });
   };
 

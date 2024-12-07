@@ -45,12 +45,7 @@ export default function ArticleList() {
           />
           <div className="w-full grid grid-cols-1 xl:grid-cols-2 items-stretch gap-10">
             {articles.map((article) => (
-              <Link
-                to={`/article/${article.article_id}`}
-                key={article.article_id}
-              >
-                <ArticleCard article={article} />
-              </Link>
+              <ArticleCard key={article.article_id} article={article} />
             ))}
           </div>
           <PaginationControls

@@ -1,6 +1,8 @@
 import useVotes from "../../hooks/useVotes";
 import mountainUp from "../../assets/mountain-up.png";
 import mountainDown from "../../assets/mountain-down.png";
+import { useAuth } from "../../context/AuthContext";
+import { useLoginModal } from "../../context/LoginModelContext";
 
 export default function ArticleVotesControl({ id, currVotes, updateVotes }) {
   const { votes, userVote, handleVote } = useVotes({
@@ -8,13 +10,21 @@ export default function ArticleVotesControl({ id, currVotes, updateVotes }) {
     currVotes,
     updateVotes,
   });
+  const { userLoggedIn } = useAuth();
+  const { openLoginModal } = useLoginModal();
 
   return (
     <div className="flex flex-col justify-center items-center">
       <p className="text-sm md:text-md">Altitude Points: {votes}m</p>
       <div className="flex flex-row gap-2">
         <button
-          onClick={() => handleVote("upvote")}
+          onClick={() => {
+            if (!userLoggedIn) {
+              openLoginModal();
+            } else {
+              handleVote("upvote");
+            }
+          }}
           className="h-8 w-12 md:h-10 md:w-14"
         >
           {console.log(userVote)}
@@ -27,7 +37,13 @@ export default function ArticleVotesControl({ id, currVotes, updateVotes }) {
           />
         </button>
         <button
-          onClick={() => handleVote("downvote")}
+          onClick={() => {
+            if (!userLoggedIn) {
+              openLoginModal();
+            } else {
+              handleVote("downvote");
+            }
+          }}
           className="h-8 w-12 md:h-10 md:w-14"
           disabled={votes === 0}
         >

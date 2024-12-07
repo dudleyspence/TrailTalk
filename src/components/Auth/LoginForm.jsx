@@ -15,6 +15,11 @@ export function LoginForm() {
   const { userLoggedIn, setUserLoggedIn } = useAuth();
   const navigate = useNavigate();
 
+  function handleDemoLogin() {
+    setEmail("example@gmail.com");
+    setPassword("password");
+  }
+
   useEffect(() => {
     if (userLoggedIn) {
       navigate("/");
@@ -38,7 +43,7 @@ export function LoginForm() {
           if (!userData) {
             throw { code: "auth/user-not-found" };
           }
-          setUserLoggedIn(userData);
+          setUserLoggedIn(userData.data.user);
         })
         .catch((error) => {
           if (error.code === "auth/wrong-password") {
@@ -110,6 +115,15 @@ export function LoginForm() {
         <Button type="submit" className="mt-6" fullWidth disabled={isSigningIn}>
           {isSigningIn ? "Logging in..." : "Login"}
         </Button>
+        <Button
+          onClick={handleDemoLogin}
+          className="mt-6"
+          fullWidth
+          disabled={isSigningIn}
+        >
+          Demo Login Details
+        </Button>
+
         <Typography color="gray" className="mt-4 text-center font-normal">
           Don't have an account?
           <a href="/signup" className="font-medium text-gray-900">
