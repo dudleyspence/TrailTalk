@@ -12,16 +12,26 @@ import {
 } from "@material-tailwind/react";
 import { useLoginModal } from "../../context/LoginModelContext";
 import { Link } from "react-router-dom";
+import logo from "../../assets/Brand/Logo/TrailLogo.png";
 
 export function LoginModal() {
   const { isOpen, closeLoginModal } = useLoginModal();
 
   return (
-    <Dialog size="xs" open={isOpen} handler={closeLoginModal}>
+    <Dialog
+      size="xs"
+      className="bg-green-100"
+      open={isOpen}
+      handler={closeLoginModal}
+    >
       <DialogHeader className="justify-between">
-        <Typography variant="h5" color="blue-gray">
-          Login to make your contribution
-        </Typography>
+        <div className="flex flex-row justify-center items-center">
+          <img className="h-9" src={logo} alt="logo" />
+          <Typography variant="h5" color="blue-gray">
+            Welcome to the trail...
+          </Typography>
+        </div>
+
         <IconButton
           color="blue-gray"
           size="sm"
@@ -57,7 +67,7 @@ export function LoginModal() {
             <MenuItem
               component={Link}
               to="/login"
-              className="mb-4 flex items-center justify-center gap-3 !py-4 shadow-md"
+              className="mb-4 flex items-center justify-center gap-3 !py-4 shadow-md bg-white"
               onClick={closeLoginModal}
             >
               <Typography className="uppercase" color="blue-gray" variant="h6">
@@ -67,7 +77,7 @@ export function LoginModal() {
             <MenuItem
               component={Link}
               to="/signup"
-              className="mb-1 flex items-center justify-center gap-3 !py-4 shadow-md"
+              className="mb-1 flex items-center justify-center gap-3 !py-4 shadow-md bg-white"
               onClick={closeLoginModal}
             >
               <Typography className="uppercase" color="blue-gray" variant="h6">

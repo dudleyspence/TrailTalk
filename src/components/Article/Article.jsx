@@ -5,7 +5,6 @@ import LoadingAnimation from "../UI/Lotties/Loading/LoadingAnimation";
 import { Avatar, Typography } from "@material-tailwind/react";
 import CreatedTime from "../Utils/CreatedTime";
 import DOMPurify from "dompurify";
-import { updateArticleVotes } from "../../../api";
 import ArticleVotesControl from "../VotesControl/ArticleVotesControl";
 import { Link } from "react-router-dom";
 
@@ -19,11 +18,11 @@ export default function Article() {
   }
 
   return (
-    <div className="w-full flex flex-col items-center gap-5 py-8">
+    <div className="w-full max-w-[1200px] flex flex-col items-center gap-5 py-5 md:py-10">
       {loading ? (
         <LoadingAnimation />
       ) : (
-        <div className="w-full flex flex-col items-center gap-10 py-8">
+        <div className="w-full flex flex-col items-center gap-10">
           <div id="article_header" className="w-full">
             <h1 className="text-2xl font-bold mb-5">{article.title}</h1>
             <div
@@ -48,7 +47,6 @@ export default function Article() {
                 <ArticleVotesControl
                   id={article.article_id}
                   currVotes={article.votes}
-                  updateVotes={updateArticleVotes}
                 />
                 <Link
                   className="hover:underline"

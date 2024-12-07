@@ -50,7 +50,7 @@ export const fetchComments = (
       order: order,
     },
   };
-  return newsApi.get(`/articles/${article_id}/comments`, queries).data;
+  return newsApi.get(`/articles/${article_id}/comments`, queries);
 };
 
 export const updateCommentVotes = (comment_id, voteChange) => {
@@ -61,9 +61,13 @@ export const fetchUserByFirebaseUID = (firebase_uid) => {
   return newsApi.get(`/users/${firebase_uid}`);
 };
 
-export const addComment = (article_id, username, body) => {
+export const addComment = (article_id, firebase_uid, body) => {
+  console.log("firebase_uid:", firebase_uid);
+  console.log("article_id:", article_id);
+  console.log("body:", body);
+
   const comment = {
-    username: username,
+    author: firebase_uid,
     body: body,
   };
   return newsApi.post(`/articles/${article_id}/comments`, comment);

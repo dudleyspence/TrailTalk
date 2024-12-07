@@ -1,14 +1,15 @@
 import useVotes from "../../hooks/useVotes";
-import mountainUp from "../../assets/mountain-up.png";
-import mountainDown from "../../assets/mountain-down.png";
+import mountainUp from "../../assets/Votes/mountain-up.png";
+import mountainDown from "../../assets/Votes/mountain-down.png";
 import { useAuth } from "../../context/AuthContext";
 import { useLoginModal } from "../../context/LoginModelContext";
+import { updateArticleVotes } from "../../../api";
 
-export default function ArticleVotesControl({ id, currVotes, updateVotes }) {
+export default function ArticleVotesControl({ id, currVotes }) {
   const { votes, userVote, handleVote } = useVotes({
     id,
     currVotes,
-    updateVotes,
+    updateArticleVotes,
   });
   const { userLoggedIn } = useAuth();
   const { openLoginModal } = useLoginModal();

@@ -7,11 +7,13 @@ function App() {
   return (
     <div className="min-h-screen">
       <DynamicNavbar />
-      <LoginModal />
-      <div className="px-[6vw] md:px-[10vw] flex justify-center">
-        <AppRoutes />
+      <div className="min-h-[calc(100vh-90px)] flex flex-col flex-grow justify-between">
+        <LoginModal />
+        <div className="px-[6vw] md:px-[10vw] flex justify-center">
+          <AppRoutes />
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

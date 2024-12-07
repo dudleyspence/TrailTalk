@@ -3,7 +3,7 @@ import { LoginForm } from "../../components/Auth/LoginForm";
 
 export default function LoginPage() {
   return (
-    <div className="flex justify-center items-center h-full">
+    <div className="flex justify-center items-center mt-5 lg:mt-16">
       <LoginForm />
     </div>
   );

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { fetchComments } from "../../api";
 
 const useComments = ({
   article_id,
@@ -12,19 +13,19 @@ const useComments = ({
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
     fetchComments(article_id, pageNo, commentsPerPage, sortBy, order)
-      .then(({ comments }) => {
-        setComments(comments);
+      .then(({ data }) => {
+        setComments(data.comments);
         setLoading(false);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         setLoading(false);
         setError(true);
       });
-  }, []);
+  }, [article_id, pageNo, commentsPerPage, sortBy, order]);
 
-  return { comments, loading, error };
+  return { comments, setComments, loading, error };
 };
 
 export default useComments;

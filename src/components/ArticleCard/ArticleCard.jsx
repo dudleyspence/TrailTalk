@@ -7,7 +7,6 @@ import {
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import CreatedTime from "../Utils/CreatedTime";
-import { updateArticleVotes } from "../../../api";
 import ArticleVotesControl from "../VotesControl/ArticleVotesControl";
 
 export function ArticleCard({ article, deleteComponent = undefined }) {
@@ -59,7 +58,6 @@ export function ArticleCard({ article, deleteComponent = undefined }) {
             <ArticleVotesControl
               id={article.article_id}
               currVotes={article.votes}
-              updateVotes={updateArticleVotes}
             />
 
             <Typography className="text-sm sm:text-md lg:text-lg">

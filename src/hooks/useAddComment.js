@@ -3,7 +3,7 @@ import { addComment } from "../../api";
 
 const useAddComment = ({
   article_id,
-  username,
+  firebase_uid,
   body,
   setComments,
   comments,
@@ -16,7 +16,7 @@ const useAddComment = ({
     setLoading(true);
     setError(false);
     setSuccess(false);
-    addComment(article_id, username, body)
+    addComment(article_id, firebase_uid, body)
       .then(({ comment }) => {
         setLoading(false);
         setSuccess(true);

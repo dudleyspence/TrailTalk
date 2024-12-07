@@ -6,8 +6,6 @@ const useArticle = (article_id) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  console.log(article_id);
-
   useEffect(() => {
     fetchArticleById(article_id)
       .then(({ data: { article } }) => {
@@ -21,7 +19,6 @@ const useArticle = (article_id) => {
       });
   }, [article_id]);
 
-  console.log(article);
   return { article, loading, error };
 };
 
