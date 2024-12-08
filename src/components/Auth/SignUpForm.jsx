@@ -22,7 +22,7 @@ export function SignUpForm() {
           </Typography>
           <Input
             size="lg"
-            placeholder="name@mail.com"
+            placeholder="e.g. TrailBlazer98"
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
             labelProps={{
               className: "before:content-none after:content-none",
@@ -74,8 +74,8 @@ export function SignUpForm() {
           sign up
         </Button>
         <Typography color="gray" className="mt-4 text-center font-normal">
-          Already have an account?
-          <a href="#" className="font-medium text-gray-900">
+          Already have an account?{" "}
+          <a href="/login" className="font-medium text-gray-900">
             Sign In
           </a>
         </Typography>

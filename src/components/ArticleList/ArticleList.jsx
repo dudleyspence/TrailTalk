@@ -12,7 +12,6 @@ export default function ArticleList() {
   const [articlesPerPage, setArticlesPerPage] = useState(6);
   const [sortBy, setSortBy] = useState("created_at");
   const [order, setOrder] = useState("desc");
-  // const username = "hikeguru";
 
   const { articles, total, loading, error } = useArticles({
     topic,

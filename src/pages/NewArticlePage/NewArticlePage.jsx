@@ -5,6 +5,7 @@ import useTopics from "../../hooks/useTopics";
 import { DragAndDropUploader } from "../../components/PostArticle/ArticleImageDropzone";
 import { TextEditorReact } from "../../components/PostArticle/TextEditor";
 import { useAuth } from "../../context/AuthContext";
+import { addArticle } from "../../../api";
 
 export default function NewArticlePage() {
   const { topics, loading, error } = useTopics();
@@ -17,6 +18,13 @@ export default function NewArticlePage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(
+      title,
+      selectedTopic,
+      articleContent,
+      selectedImage,
+      userLoggedIn.firebase_uid
+    );
 
     if (
       !title.trim() ||
@@ -43,7 +51,7 @@ export default function NewArticlePage() {
           author: userLoggedIn.firebase_uid,
           title,
           topic: selectedTopic,
-          content: articleContent,
+          body: articleContent,
           article_img_url: imageUrl,
         };
 
@@ -104,10 +112,21 @@ export default function NewArticlePage() {
         )}
 
         <div>
-          <TextEditorReact onChange={(content) => setArticleContent(content)} />
+          <TextEditorReact setArticleContent={setArticleContent} />
         </div>
 
-        <Button type="submit" size="sm" className="w-fit" disabled={uploading}>
+        <Button
+          type="submit"
+          size="sm"
+          className="w-fit self-end"
+          disabled={
+            uploading ||
+            !title.trim() ||
+            !selectedTopic ||
+            !articleContent.trim() ||
+            !selectedImage
+          }
+        >
           {uploading ? "Uploading..." : "Submit Article"}
         </Button>
       </form>

@@ -5,6 +5,7 @@ import NewArticlePage from "./pages/NewArticlePage/NewArticlePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ArticlePage from "./pages/ArticlePage/ArticlePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import SignUpPage from "./pages/SignUpPage/SignUpPage";
 
 export default function AppRoutes() {
   return (
@@ -14,7 +15,7 @@ export default function AppRoutes() {
       <Route path="/addarticle" element={<NewArticlePage />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/login" element={<LoginPage />} />
-
+      <Route path="/signup" element={<SignUpPage />} />
       <Route path="/article/:article_id" element={<ArticlePage />} />
       <Route path="*" element={"/"} />
     </Routes>

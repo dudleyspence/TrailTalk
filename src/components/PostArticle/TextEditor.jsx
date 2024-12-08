@@ -44,6 +44,8 @@ import { $wrapNodes, $isAtNodeEnd } from "@lexical/selection";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { $getNearestNodeOfType, mergeRegister } from "@lexical/utils";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
+import { $generateHtmlFromNodes } from "@lexical/html";
+
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
@@ -874,7 +876,25 @@ const editorConfig = {
   ],
 };
 
-export function TextEditorReact() {
+function MyOnChangePlugin({ onChange }) {
+  const [editor] = useLexicalComposerContext();
+
+  useEffect(() => {
+    return editor.registerUpdateListener(({ editorState }) => {
+      editorState.read(() => {
+        const htmlString = $generateHtmlFromNodes(editor, null);
+        onChange(htmlString);
+      });
+    });
+  }, [editor, onChange]);
+
+  return null;
+}
+
+export function TextEditorReact({ setArticleContent }) {
+  function onChange(htmlContent) {
+    setArticleContent(htmlContent);
+  }
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="relative mx-auto my-5 w-full overflow-hidden rounded-xl border border-gray-300 bg-white text-left font-normal leading-5 text-gray-900">
@@ -890,6 +910,7 @@ export function TextEditorReact() {
           <AutoFocusPlugin />
           <ListPlugin />
           <LinkPlugin />
+          <MyOnChangePlugin onChange={onChange} />
         </div>
       </div>
     </LexicalComposer>

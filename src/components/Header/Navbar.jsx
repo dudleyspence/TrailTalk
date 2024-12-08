@@ -152,10 +152,10 @@ export function DynamicNavbar() {
       <Link to="/">
         <img className="h-[40px] md:h-[60px]" src={logo} alt="logo" />
       </Link>
-      <div className="flex flex-row gap-3 justify-center items-center">
+      <div className="flex flex-row md:gap-3 justify-center items-center">
         <Link className="mr-2 lg:mr-4" to="/">
           <Button
-            className="text-[9px] md:text-[12px] px-3 py-2 "
+            className="text-[9px] md:text-[12px] px-2 md:px-3 py-2 "
             variant="gradient"
             size="sm"
           >
@@ -165,7 +165,7 @@ export function DynamicNavbar() {
         {userLoggedIn ? (
           <div className="flex flex-row justify-center items-center">
             <Link className="mr-2 lg:mr-4" to="/addarticle">
-              <Button className="bg-teal-800 text-[9px] md:text-[12px] px-3 py-2 text-white">
+              <Button className="bg-teal-800 text-[9px] md:text-[12px] px-2 md:px-3 py-2 text-white">
                 <span>Post Article</span>
               </Button>
             </Link>
@@ -173,7 +173,7 @@ export function DynamicNavbar() {
           </div>
         ) : (
           <Link className="mr-2 lg:mr-4" to="/login">
-            <Button className="bg-deep-orange-600 text-[9px] md:text-[12px] px-3 py-2 ">
+            <Button className="bg-deep-orange-600 text-[9px] md:text-[12px] px-2 md:px-3  py-2 ">
               <span>Login / Sign Up</span>
             </Button>
           </Link>
