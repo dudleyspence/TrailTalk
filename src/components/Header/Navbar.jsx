@@ -150,7 +150,7 @@ export function DynamicNavbar() {
   return (
     <Navbar className="sticky top-0 z-10 h-[90px] min-w-full bg-green-200 rounded-none px-4 lg:px-8 lg:py-4 flex items-center justify-between text-blue-gray-900">
       <Link to="/">
-        <img className="h-[35px] md:h-[55px]" src={logo} alt="logo" />
+        <img className="h-[40px] md:h-[60px]" src={logo} alt="logo" />
       </Link>
       <div className="flex flex-row gap-3 justify-center items-center">
         <Link className="mr-2 lg:mr-4" to="/">
@@ -163,7 +163,14 @@ export function DynamicNavbar() {
           </Button>
         </Link>
         {userLoggedIn ? (
-          <ProfileMenu user={userLoggedIn} />
+          <div className="flex flex-row justify-center items-center">
+            <Link className="mr-2 lg:mr-4" to="/addarticle">
+              <Button className="bg-teal-800 text-[9px] md:text-[12px] px-3 py-2 text-white">
+                <span>Post Article</span>
+              </Button>
+            </Link>
+            <ProfileMenu user={userLoggedIn} />
+          </div>
         ) : (
           <Link className="mr-2 lg:mr-4" to="/login">
             <Button className="bg-deep-orange-600 text-[9px] md:text-[12px] px-3 py-2 ">
