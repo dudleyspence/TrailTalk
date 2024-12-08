@@ -94,3 +94,16 @@ export const deleteArticleById = (article_id) => {
 export const sendImage = (formData, config) => {
   newsApi.post("/images", formData, config);
 };
+
+export const addUser = (firebase_uid, username, name, avatar_url) => {
+  const body = {
+    firebase_uid,
+    username,
+    name,
+  };
+  if (avatar_url) {
+    body["avatar_url"] = avatar_url;
+  }
+
+  return newsApi.post("/users", body);
+};
