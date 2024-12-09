@@ -6,8 +6,8 @@ import {
   Avatar,
 } from "@material-tailwind/react";
 import CommentVotesControl from "../VotesControl/CommentVotesControl";
-import { updateCommentVotes } from "../../../api";
 import CreatedTime from "../Utils/CreatedTime";
+console.log();
 
 export function Comment({ comment }) {
   console.log(comment);
@@ -39,9 +39,8 @@ export function Comment({ comment }) {
             </Typography>
           </div>
           <CommentVotesControl
-            id={comment.id}
+            id={comment.comment_id}
             currVotes={comment.votes}
-            updateVotes={updateCommentVotes}
           />
         </div>
       </CardHeader>

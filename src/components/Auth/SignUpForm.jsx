@@ -5,17 +5,12 @@ import {
   Button,
   Typography,
   Checkbox,
-  Dialog,
-  DialogHeader,
-  DialogFooter,
 } from "@material-tailwind/react";
 import { useAuth } from "../../context/AuthContext";
 import { addUser } from "../../../api";
 import { useNavigate } from "react-router-dom";
-import {
-  doCreateUserWithEmailAndPassword,
-  doSignInWithGoogle,
-} from "../../firebase/auth";
+import { doCreateUserWithEmailAndPassword } from "../../firebase/auth";
+import { UseGoogle } from "./UseGoogle";
 
 export function SignUpForm() {
   const [email, setEmail] = useState("");
@@ -79,103 +74,6 @@ export function SignUpForm() {
         })
         .finally(() => {
           setSigningUp(false);
-        });
-    }
-  }
-
-  function GoogleUsername() {
-    const [open, setOpen] = React.useState(false);
-
-    const handleOpen = () => setOpen(!open);
-
-    return (
-      <>
-        <Button onClick={handleOpen} variant="gradient">
-          SignUp With Google
-        </Button>
-        <Dialog
-          open={open}
-          handler={handleOpen}
-          className="flex flex-col items-center justify-center"
-        >
-          <DialogHeader>First pick a username: </DialogHeader>
-          <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Your Usernane
-          </Typography>
-          <Input
-            size="lg"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="e.g. TrailBlazer98"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900 w-[80%] min-w-10"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-          />
-          <DialogFooter>
-            <Button
-              variant="text"
-              color="red"
-              onClick={() => {
-                setUsername("");
-                handleOpen();
-              }}
-              className="mr-1"
-            >
-              <span>Cancel</span>
-            </Button>
-            <Button
-              variant="gradient"
-              color="green"
-              onClick={(event) => {
-                onGoogleSignUp(event);
-                handleOpen();
-              }}
-            >
-              <span>Confirm</span>
-            </Button>
-          </DialogFooter>
-        </Dialog>
-      </>
-    );
-  }
-
-  function onGoogleSignUp(event) {
-    event.preventDefault;
-    if (!isRegistering) {
-      setIsRegistering(true);
-      doSignInWithGoogle()
-        .then((result) => {
-          const user = result.user;
-          if (result._tokenResponse.isNewUser) {
-            return addNewUser(
-              user.uid,
-              username,
-              user.displayName,
-              user.photoURL
-            ).then(({ user }) => {
-              return user.firebaseUID;
-            });
-          } else {
-            console.log("existing user signed in");
-            return user.uid;
-          }
-        })
-        .then((firebaseUID) => {
-          return getUserByFirebase(firebaseUID);
-        })
-        .then((populatedUser) => {
-          setCurrentUser(populatedUser);
-          if (populatedUser.user.role === "guardian") {
-            setGuardianLoggedIn(true);
-            setCarerLoggedIn(false);
-          }
-          if (populatedUser.user.role === "carer") {
-            setGuardianLoggedIn(false);
-            setCarerLoggedIn(true);
-          }
-          setIsRegistering(false);
-          navigate(`/dashboard`);
         });
     }
   }
@@ -288,8 +186,8 @@ export function SignUpForm() {
             Sign In
           </a>
         </Typography>
+        <UseGoogle />
       </form>
-      <GoogleUsername />
     </Card>
   );
 }

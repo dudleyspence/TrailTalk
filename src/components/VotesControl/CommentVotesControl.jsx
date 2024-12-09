@@ -24,7 +24,6 @@ export default function CommentVotesControl({ id, currVotes }) {
 
     setVotes(newVotes);
     setUserVote(newUserVote);
-
     updateCommentVotes(id, voteChange)
       .then(() => {
         console.log("Vote successfully updated!");

@@ -33,7 +33,5 @@ export function doSignInWithGoogle() {
 
 // Function to sign out
 export function doSignOut() {
-  return signOut(auth).then((response) => {
-    return response;
-  });
+  return signOut(auth);
 }

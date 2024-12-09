@@ -54,6 +54,7 @@ export const fetchComments = (
 };
 
 export const updateCommentVotes = (comment_id, voteChange) => {
+  console.log(comment_id, voteChange);
   return newsApi.patch(`/comments/${comment_id}`, { inc_votes: voteChange });
 };
 

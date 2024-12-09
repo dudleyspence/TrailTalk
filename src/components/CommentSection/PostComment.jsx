@@ -50,7 +50,7 @@ export function PostComment({ article_id, comments, setComments }) {
       <Button
         onClick={handlePostComment}
         size="sm"
-        className="w-fit h-fit px-4 rounded-md"
+        className="min-h-fit"
         disabled={loading || !userLoggedIn}
       >
         {loading ? "Posting..." : "Post Comment"}

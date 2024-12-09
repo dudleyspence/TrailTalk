@@ -23,6 +23,7 @@ import {
   Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
+import { doSignOut } from "../../firebase/auth";
 
 const profileMenuItems = [
   {
@@ -50,7 +51,6 @@ const profileMenuItems = [
 function ProfileMenu({ user }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const { signOutUser } = useAuth();
 
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -75,7 +75,7 @@ function ProfileMenu({ user }) {
   };
 
   const handleSignOut = () => {
-    signOutUser()
+    doSignOut()
       .then(() => {
         navigate("/login");
       })
@@ -85,6 +85,7 @@ function ProfileMenu({ user }) {
       });
   };
 
+  console.log(user.avatar_url);
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
       <MenuHandler>

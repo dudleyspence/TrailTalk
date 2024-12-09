@@ -5,6 +5,7 @@ import { auth } from "../../firebase/firebase";
 import { useAuth } from "../../context/AuthContext";
 import { fetchUserByFirebaseUID } from "../../../api";
 import { useNavigate } from "react-router-dom";
+import { UseGoogle } from "./UseGoogle";
 
 export function LoginForm() {
   const [email, setEmail] = useState("");
@@ -131,6 +132,7 @@ export function LoginForm() {
             Sign Up
           </a>
         </Typography>
+        <UseGoogle />
       </form>
     </Card>
   );
