@@ -10,10 +10,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [userLoggedIn, setUserLoggedIn] = useState(() => {
-    const storedUser = localStorage.getItem("userLoggedIn");
-    return storedUser ? JSON.parse(storedUser) : null;
-  });
+  const [userLoggedIn, setUserLoggedIn] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

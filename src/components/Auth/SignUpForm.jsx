@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Card, Input, Button, Typography } from "@material-tailwind/react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
+import {
+  Card,
+  Input,
+  Button,
+  Typography,
+  Checkbox,
+  Dialog,
+  DialogHeader,
+  DialogFooter,
+} from "@material-tailwind/react";
 import { useAuth } from "../../context/AuthContext";
-import { addUser, fetchUserByFirebaseUID } from "../../../api";
+import { addUser } from "../../../api";
 import { useNavigate } from "react-router-dom";
-import { doCreateUserWithEmailAndPassword } from "../../firebase/auth";
+import {
+  doCreateUserWithEmailAndPassword,
+  doSignInWithGoogle,
+} from "../../firebase/auth";
 
 export function SignUpForm() {
   const [email, setEmail] = useState("");
@@ -42,9 +52,10 @@ export function SignUpForm() {
       setSigningUp(true);
       setError("");
 
-      doCreateUserWithEmailAndPassword(auth, email, password)
+      doCreateUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
           const firebaseUser = userCredential.user;
+          console.log(firebaseUser);
 
           return addUser(firebaseUser.uid, username, name);
         })
@@ -52,6 +63,7 @@ export function SignUpForm() {
           if (!userData) {
             throw { code: "auth/user-not-found" };
           }
+          console.log(userData);
           setUserLoggedIn(userData.data.user);
         })
         .catch((error) => {
@@ -66,10 +78,108 @@ export function SignUpForm() {
           }
         })
         .finally(() => {
-          setSigningIn(false);
+          setSigningUp(false);
         });
     }
   }
+
+  function GoogleUsername() {
+    const [open, setOpen] = React.useState(false);
+
+    const handleOpen = () => setOpen(!open);
+
+    return (
+      <>
+        <Button onClick={handleOpen} variant="gradient">
+          SignUp With Google
+        </Button>
+        <Dialog
+          open={open}
+          handler={handleOpen}
+          className="flex flex-col items-center justify-center"
+        >
+          <DialogHeader>First pick a username: </DialogHeader>
+          <Typography variant="h6" color="blue-gray" className="-mb-3">
+            Your Usernane
+          </Typography>
+          <Input
+            size="lg"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="e.g. TrailBlazer98"
+            className=" !border-t-blue-gray-200 focus:!border-t-gray-900 w-[80%] min-w-10"
+            labelProps={{
+              className: "before:content-none after:content-none",
+            }}
+          />
+          <DialogFooter>
+            <Button
+              variant="text"
+              color="red"
+              onClick={() => {
+                setUsername("");
+                handleOpen();
+              }}
+              className="mr-1"
+            >
+              <span>Cancel</span>
+            </Button>
+            <Button
+              variant="gradient"
+              color="green"
+              onClick={(event) => {
+                onGoogleSignUp(event);
+                handleOpen();
+              }}
+            >
+              <span>Confirm</span>
+            </Button>
+          </DialogFooter>
+        </Dialog>
+      </>
+    );
+  }
+
+  function onGoogleSignUp(event) {
+    event.preventDefault;
+    if (!isRegistering) {
+      setIsRegistering(true);
+      doSignInWithGoogle()
+        .then((result) => {
+          const user = result.user;
+          if (result._tokenResponse.isNewUser) {
+            return addNewUser(
+              user.uid,
+              username,
+              user.displayName,
+              user.photoURL
+            ).then(({ user }) => {
+              return user.firebaseUID;
+            });
+          } else {
+            console.log("existing user signed in");
+            return user.uid;
+          }
+        })
+        .then((firebaseUID) => {
+          return getUserByFirebase(firebaseUID);
+        })
+        .then((populatedUser) => {
+          setCurrentUser(populatedUser);
+          if (populatedUser.user.role === "guardian") {
+            setGuardianLoggedIn(true);
+            setCarerLoggedIn(false);
+          }
+          if (populatedUser.user.role === "carer") {
+            setGuardianLoggedIn(false);
+            setCarerLoggedIn(true);
+          }
+          setIsRegistering(false);
+          navigate(`/dashboard`);
+        });
+    }
+  }
+
   return (
     <Card color="transparent" shadow={false}>
       <Typography variant="h4" color="blue-gray">
@@ -78,7 +188,10 @@ export function SignUpForm() {
       <Typography color="gray" className="mt-1 font-normal">
         Nice to meet you! Enter your details to register.
       </Typography>
-      <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+      <form
+        className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
+        onSubmit={onSubmit}
+      >
         <div className="mb-1 flex flex-col gap-6">
           <Typography variant="h6" color="blue-gray" className="-mb-3">
             Your Full Name
@@ -87,7 +200,7 @@ export function SignUpForm() {
             size="lg"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="e.g. TrailBlazer98"
+            placeholder="Joe Bloggs"
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
             labelProps={{
               className: "before:content-none after:content-none",
@@ -176,6 +289,7 @@ export function SignUpForm() {
           </a>
         </Typography>
       </form>
+      <GoogleUsername />
     </Card>
   );
 }
