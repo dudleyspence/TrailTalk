@@ -1,6 +1,6 @@
 import AppRoutes from "./AppRoutes";
-import LoginModal from "./components/Auth/LoginModel";
-import Footer from "./components/Footer/Footer";
+import LoginModal from "./components/auth/LoginModel";
+import Footer from "./components/footer/Footer";
 import { DynamicNavbar } from "./components/header/Navbar";
 
 function App() {

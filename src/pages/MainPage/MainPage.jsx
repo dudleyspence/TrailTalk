@@ -1,6 +1,6 @@
 import React from "react";
-import ArticleList from "../../components/ArticleList/ArticleList";
-import TopicSorting from "../../components/SortingControls/TopicSorting";
+import ArticleList from "../../components/articleList/ArticleList";
+import TopicSorting from "../../components/sortingControls/TopicSorting";
 
 export default function MainPage() {
   return (
