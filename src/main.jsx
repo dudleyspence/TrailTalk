@@ -6,11 +6,11 @@ import { AuthProvider } from "./context/AuthContext.jsx";
 import { LoginModalProvider } from "./context/LoginModelContext.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <AuthProvider>
-    <LoginModalProvider>
-      <BrowserRouter>
+  <BrowserRouter>
+    <AuthProvider>
+      <LoginModalProvider>
         <App />
-      </BrowserRouter>
-    </LoginModalProvider>
-  </AuthProvider>
+      </LoginModalProvider>
+    </AuthProvider>
+  </BrowserRouter>
 );
