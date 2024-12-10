@@ -5,8 +5,8 @@ import {
   Typography,
   Avatar,
 } from "@material-tailwind/react";
-import CommentVotesControl from "../votesControl/CommentVotesControl";
-import CreatedTime from "../utils/CreatedTime";
+import CommentVotesControl from "../VotesControl/CommentVotesControl";
+import CreatedTime from "../Utils/CreatedTime";
 console.log();
 
 export function Comment({ comment }) {

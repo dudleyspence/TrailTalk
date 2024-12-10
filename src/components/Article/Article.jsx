@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import useArticle from "../../hooks/useArticle";
 import LoadingAnimation from "../UI/Lotties/Loading/LoadingAnimation";
 import { Avatar, Typography } from "@material-tailwind/react";
-import CreatedTime from "../utils/CreatedTime";
+import CreatedTime from "../Utils/CreatedTime";
 import DOMPurify from "dompurify";
-import ArticleVotesControl from "../votesControl/ArticleVotesControl";
+import ArticleVotesControl from "../VotesControl/ArticleVotesControl";
 import { Link } from "react-router-dom";
 
 export default function Article() {

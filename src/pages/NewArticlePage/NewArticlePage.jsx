@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Input, Button } from "@material-tailwind/react";
 import useTopics from "../../hooks/useTopics";
-import { DragAndDropUploader } from "../../components/PostArticle/ArticleImageDropzone";
-import { TextEditorReact } from "../../components/PostArticle/TextEditor";
+import { DragAndDropUploader } from "../../components/postArticle/ArticleImageDropzone";
+import { TextEditorReact } from "../../components/postArticle/TextEditor";
 import { useAuth } from "../../context/AuthContext";
 import { addArticle } from "../../../api";
 

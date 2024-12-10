@@ -6,8 +6,8 @@ import {
   Avatar,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
-import CreatedTime from "../utils/CreatedTime";
-import ArticleVotesControl from "../votesControl/ArticleVotesControl";
+import CreatedTime from "../Utils/CreatedTime";
+import ArticleVotesControl from "../VotesControl/ArticleVotesControl";
 
 export function ArticleCard({ article, deleteComponent = undefined }) {
   return (

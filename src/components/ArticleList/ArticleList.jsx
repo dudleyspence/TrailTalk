@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import useArticles from "../../hooks/useArticles";
 import { ArticleCard } from "../articleCard/ArticleCard";
 import { Link, useParams } from "react-router-dom";
-import PaginationControls from "../pagination/PaginationControls";
+import PaginationControls from "../Pagination/PaginationControls";
 import LoadingAnimation from "../UI/Lotties/Loading/LoadingAnimation";
-import ListControls from "../sortingControls/ListControls";
+import ListControls from "../SortingControls/ListControls";
 import ArticleListSkeleton from "./ArticleListSkeleton";
 
 export default function ArticleList() {

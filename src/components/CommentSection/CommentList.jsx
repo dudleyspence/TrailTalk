@@ -1,7 +1,7 @@
 import React from "react";
-import PaginationControls from "../pagination/PaginationControls";
+import PaginationControls from "../Pagination/PaginationControls";
 import { Comment } from "./Comment";
-import ListControls from "../sortingControls/ListControls";
+import ListControls from "../SortingControls/ListControls";
 
 export default function CommentList({
   comments,
