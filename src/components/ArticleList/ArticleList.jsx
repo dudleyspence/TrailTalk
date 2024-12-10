@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import PaginationControls from "../Pagination/PaginationControls";
 import LoadingAnimation from "../UI/Lotties/Loading/LoadingAnimation";
 import ListControls from "../SortingControls/ListControls";
+import ArticleListSkeleton from "./ArticleListSkeleton";
 
 export default function ArticleList() {
   const { topic } = useParams();
@@ -28,7 +29,7 @@ export default function ArticleList() {
   return (
     <div className="w-full flex flex-col items-center gap-5 py-8">
       {loading ? (
-        <LoadingAnimation />
+        <ArticleListSkeleton />
       ) : (
         <>
           <ListControls

@@ -108,7 +108,7 @@ export function UseGoogle() {
         size="sm"
         variant="outlined"
         color="blue-gray"
-        className="flex items-center gap-3 mt-5"
+        className="flex items-center justify-center gap-3 mt-5"
         fullWidth
       >
         <img

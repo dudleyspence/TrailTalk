@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Typography } from "@material-tailwind/react";
 import useTopics from "../../hooks/useTopics";
+import TopicsSkeleton from "./TopicsSkeleton";
 
 export default function TopicSorting() {
   const { topics, loading, error } = useTopics();
@@ -8,9 +9,9 @@ export default function TopicSorting() {
   return error ? (
     "oh no an error loading the topic"
   ) : loading ? (
-    "loading topics"
+    <TopicsSkeleton />
   ) : (
-    <div className="my-10">
+    <div className="mt-10 mb-5">
       <nav className="w-full flex flex-row justify-evenly">
         {topics.map((topic) => (
           <Link key={topic.slug} to={`/topics/${topic.slug}`}>

@@ -90,6 +90,13 @@ export function SignUpForm() {
         className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
         onSubmit={onSubmit}
       >
+        <UseGoogle />
+
+        <div class="flex items-center my-6">
+          <hr class="flex-grow border-t border-gray-300" />
+          <span class="mx-4 text-gray-500 text-sm">or</span>
+          <hr class="flex-grow border-t border-gray-300" />
+        </div>
         <div className="mb-1 flex flex-col gap-6">
           <Typography variant="h6" color="blue-gray" className="-mb-3">
             Your Full Name
@@ -186,7 +193,6 @@ export function SignUpForm() {
             Sign In
           </a>
         </Typography>
-        <UseGoogle />
       </form>
     </Card>
   );
