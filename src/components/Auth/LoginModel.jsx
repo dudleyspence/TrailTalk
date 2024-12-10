@@ -64,26 +64,34 @@ export function LoginModal() {
             Options
           </Typography>
           <ul className="mt-3 -ml-2 flex flex-col gap-1">
-            <MenuItem
-              component={Link}
-              to="/login"
-              className="mb-4 flex items-center justify-center gap-3 !py-4 shadow-md bg-white"
-              onClick={closeLoginModal}
-            >
-              <Typography className="uppercase" color="blue-gray" variant="h6">
-                Login
-              </Typography>
-            </MenuItem>
-            <MenuItem
-              component={Link}
-              to="/signup"
-              className="mb-1 flex items-center justify-center gap-3 !py-4 shadow-md bg-white"
-              onClick={closeLoginModal}
-            >
-              <Typography className="uppercase" color="blue-gray" variant="h6">
-                Sign Up
-              </Typography>
-            </MenuItem>
+            <Link to="/login">
+              <MenuItem
+                className="mb-4 flex items-center justify-center gap-3 !py-4 shadow-md bg-white"
+                onClick={closeLoginModal}
+              >
+                <Typography
+                  className="uppercase"
+                  color="blue-gray"
+                  variant="h6"
+                >
+                  Login
+                </Typography>
+              </MenuItem>
+            </Link>
+            <Link to="/signup">
+              <MenuItem
+                className="mb-1 flex items-center justify-center gap-3 !py-4 shadow-md bg-white"
+                onClick={closeLoginModal}
+              >
+                <Typography
+                  className="uppercase"
+                  color="blue-gray"
+                  variant="h6"
+                >
+                  Sign Up
+                </Typography>
+              </MenuItem>
+            </Link>
           </ul>
         </div>
       </DialogBody>
