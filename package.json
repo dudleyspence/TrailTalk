@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "start": "serve -s dist",
+    "start": "serve -s dist -l tcp://0.0.0.0:$PORT",
     "preview": "vite preview"
   },
   "dependencies": {
