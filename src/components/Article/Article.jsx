@@ -7,6 +7,7 @@ import CreatedTime from "../Utils/CreatedTime";
 import DOMPurify from "dompurify";
 import ArticleVotesControl from "../VotesControl/ArticleVotesControl";
 import { Link } from "react-router-dom";
+import ArticleSkeleton from "./ArticleSkeleton";
 
 export default function Article() {
   const { article_id } = useParams();
@@ -20,7 +21,7 @@ export default function Article() {
   return (
     <div className="w-full max-w-[1200px] flex flex-col items-center gap-5 py-5 md:py-10">
       {loading ? (
-        <LoadingAnimation />
+        <ArticleSkeleton />
       ) : (
         <div className="w-full flex flex-col items-center gap-10">
           <div id="article_header" className="w-full">
@@ -59,9 +60,9 @@ export default function Article() {
               </div>
             </div>
           </div>
-          <div id="article_body">
+          <div id="article_body" className="w-full">
             <img
-              className="h-auto w-full rounded-lg object-cover object-center"
+              className="h-auto w-full aspect-square md:aspect-video rounded-lg object-cover object-center"
               src={article.article_img_url}
             />
           </div>

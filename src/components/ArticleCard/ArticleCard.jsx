@@ -11,12 +11,12 @@ import ArticleVotesControl from "../VotesControl/ArticleVotesControl";
 
 export function ArticleCard({ article, deleteComponent = undefined }) {
   return (
-    <Card className="w-full h-full min-h-[500px] lg:min-h-[600px] shadow-lg hover:shadow-2xl overflow-hidden relative flex flex-col justify-between cursor-pointer">
+    <Card className="w-full h-[600px] shadow-lg hover:shadow-2xl overflow-hidden relative flex flex-col justify-between cursor-pointer">
       <CardHeader
         floated={false}
         shadow={false}
         color="transparent"
-        className="h-3/5 md:h-2/3 m-0 relative shrink-0 rounded-none overflow-hidden"
+        className="h-3/5 m-0 relative shrink-0 rounded-none overflow-hidden"
       >
         <Link to={`/article/${article.article_id}`}>
           <img
@@ -26,7 +26,7 @@ export function ArticleCard({ article, deleteComponent = undefined }) {
           />
         </Link>
       </CardHeader>
-      <CardBody className="p-4 md:p-6 flex flex-col justify-between items-start h-2/5 md:h-1/3 gap-4">
+      <CardBody className="p-4 max-h-fit md:p-6 flex flex-col justify-between items-start h-2/5 gap-4">
         <div className="flex flex-row gap-3 w-full justify-between">
           <Link to={`/article/${article.article_id}`}>
             <Typography className="hover:underline underline-offset-8 text-md sm:text-2xl font-bold">
@@ -40,7 +40,7 @@ export function ArticleCard({ article, deleteComponent = undefined }) {
           )}
         </div>
         <div className="flex flex-row w-full justify-between">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center">
+          <div className="flex flex-col sm:flex-row gap-2 items-start sm:items-center">
             <Avatar
               variant="circular"
               alt={article.author}
