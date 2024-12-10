@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import MainPage from "./pages/mainPage/MainPage";
-import NewArticlePage from "./pages/newArticlePage/NewArticlePage";
-import ProfilePage from "./pages/profilePage/ProfilePage";
-import ArticlePage from "./pages/articlePage/ArticlePage";
-import LoginPage from "./pages/loginPage/LoginPage";
-import SignUpPage from "./pages/signUpPage/SignUpPage";
+import MainPage from "./pages/MainPage/MainPage";
+import NewArticlePage from "./pages/NewArticlePage/NewArticlePage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import ArticlePage from "./pages/ArticlePage/ArticlePage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import SignUpPage from "./pages/SignUpPage/SignUpPage";
 
 export default function AppRoutes() {
   return (

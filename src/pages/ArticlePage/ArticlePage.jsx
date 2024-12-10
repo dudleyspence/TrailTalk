@@ -1,6 +1,6 @@
 import React from "react";
-import Article from "../../components/article/Article";
-import CommentSection from "../../components/commentSection/CommentSection";
+import Article from "../../components/Article/Article";
+import CommentSection from "../../components/CommentSection/CommentSection";
 
 export default function ArticlePage() {
   return (

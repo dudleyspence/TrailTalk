@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useArticles from "../../hooks/useArticles";
-import { ArticleCard } from "../articleCard/ArticleCard";
+import { ArticleCard } from "../ArticleCard/ArticleCard";
 import { Link, useParams } from "react-router-dom";
 import PaginationControls from "../Pagination/PaginationControls";
 import LoadingAnimation from "../UI/Lotties/Loading/LoadingAnimation";
