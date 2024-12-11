@@ -10,7 +10,7 @@ export const fetchArticles = (
   order,
   pageNo,
   articlesPerPage,
-  username = null
+  firebaseUID = null
 ) => {
   const queries = {
     params: {
@@ -21,14 +21,18 @@ export const fetchArticles = (
       limit: articlesPerPage,
     },
   };
-  if (username) {
-    queries.params["author"] = username;
+  if (firebaseUID) {
+    queries.params["author"] = firebaseUID;
   }
   return newsApi.get("/articles", queries);
 };
 
 export const fetchArticleById = (article_id) => {
   return newsApi.get(`/articles/${article_id}`);
+};
+
+export const fetchUserStats = (firebase_uid) => {
+  return newsApi.get(`/users/stats/${firebase_uid}`);
 };
 
 export const updateArticleVotes = (article_id, voteChange) => {
@@ -88,7 +92,6 @@ export const addArticle = (article) => {
 };
 
 export const deleteArticleById = (article_id) => {
-  console.log(article_id);
   return newsApi.delete(`/articles/${article_id}`);
 };
 

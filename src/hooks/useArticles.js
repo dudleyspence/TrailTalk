@@ -7,7 +7,7 @@ const useArticles = ({
   order,
   pageNo,
   articlesPerPage,
-  username,
+  firebaseUID,
 }) => {
   const [articles, setArticles] = useState([]);
   const [total, setTotal] = useState(0);
@@ -15,7 +15,7 @@ const useArticles = ({
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchArticles(topic, sortBy, order, pageNo, articlesPerPage, username)
+    fetchArticles(topic, sortBy, order, pageNo, articlesPerPage, firebaseUID)
       .then(({ data }) => {
         setTotal(data.total);
         setArticles(data.articles);
@@ -26,9 +26,9 @@ const useArticles = ({
         setError(true);
         setLoading(false);
       });
-  }, [topic, pageNo, articlesPerPage, sortBy, order, username]);
+  }, [topic, pageNo, articlesPerPage, sortBy, order, firebaseUID]);
 
-  return { articles, total, loading, error };
+  return { articles, setArticles, total, loading, error };
 };
 
 export default useArticles;

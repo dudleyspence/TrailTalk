@@ -44,6 +44,8 @@ import { $wrapNodes, $isAtNodeEnd } from "@lexical/selection";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { $getNearestNodeOfType, mergeRegister } from "@lexical/utils";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
+import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
+import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
 import { $generateHtmlFromNodes } from "@lexical/html";
 
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
@@ -899,13 +901,15 @@ export function TextEditorReact({ setArticleContent }) {
     <LexicalComposer initialConfig={editorConfig}>
       <div className="relative mx-auto my-5 w-full overflow-hidden rounded-xl border border-gray-300 bg-white text-left font-normal leading-5 text-gray-900">
         <ToolbarPlugin />
+        <HistoryPlugin />
+
         <div className="relative rounded-b-lg border-opacity-5 bg-white w-full">
           <RichTextPlugin
             contentEditable={
               <ContentEditable className="lexical min-h-[280px] resize-none px-2.5 py-4 text-base caret-gray-900 outline-none w-full" />
             }
             placeholder={<Placeholder />}
-            ErrorBoundary={null}
+            ErrorBoundary={LexicalErrorBoundary}
           />
           <AutoFocusPlugin />
           <ListPlugin />

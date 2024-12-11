@@ -138,6 +138,7 @@ export function UseGoogle() {
           <Button
             variant="gradient"
             color="green"
+            disabled={!username.trim()}
             onClick={() => {
               handleOpen();
               addNewUser();

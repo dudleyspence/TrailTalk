@@ -8,8 +8,14 @@ import {
 import { Link } from "react-router-dom";
 import CreatedTime from "../Utils/CreatedTime";
 import ArticleVotesControl from "../VotesControl/ArticleVotesControl";
+import DeleteArticle from "../Profile/DeleteArticle";
 
-export function ArticleCard({ article, deleteComponent = undefined }) {
+export function ArticleCard({
+  article,
+  deleteComponent,
+  setArticles,
+  articles,
+}) {
   return (
     <Card className="w-full h-[600px] shadow-lg hover:shadow-2xl overflow-hidden relative flex flex-col justify-between cursor-pointer">
       <CardHeader
@@ -37,6 +43,13 @@ export function ArticleCard({ article, deleteComponent = undefined }) {
             <div className="mb-2 rounded-full bg-cyan-600 py-1 h-fit px-3 border border-transparent text-xs text-white transition-all shadow-sm w-fit text-center">
               POPULAR
             </div>
+          )}
+          {deleteComponent && (
+            <DeleteArticle
+              article_id={article.article_id}
+              articles={articles}
+              setArticles={setArticles}
+            />
           )}
         </div>
         <div className="flex flex-row w-full justify-between">

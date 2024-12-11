@@ -78,12 +78,11 @@ export default function NewArticlePage() {
       {error && <p>Error loading topics</p>}
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        <DragAndDropUploader onFileSelect={(file) => setSelectedImage(file)} />
-
         <Input
           variant="outlined"
           size="lg"
           label="Article Title"
+          className="text-xl"
           placeholder="Enter your article title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -111,9 +110,8 @@ export default function NewArticlePage() {
           </div>
         )}
 
-        <div>
-          <TextEditorReact setArticleContent={setArticleContent} />
-        </div>
+        <TextEditorReact setArticleContent={setArticleContent} />
+        <DragAndDropUploader onFileSelect={(file) => setSelectedImage(file)} />
 
         <Button
           type="submit"
