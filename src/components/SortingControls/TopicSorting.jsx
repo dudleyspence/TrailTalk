@@ -13,11 +13,6 @@ export default function TopicSorting() {
   ) : (
     <div className="mt-10 mb-5">
       <nav className="w-full flex flex-row justify-evenly">
-        <Link to={`/`}>
-          <Typography className="text-lg lg:text-2xl font-bold hover:underline hover:underline-offset-[10px]">
-            All
-          </Typography>
-        </Link>
         {topics.map((topic) => (
           <Link key={topic.slug} to={`/topics/${topic.slug}`}>
             <Typography className="text-lg lg:text-2xl font-bold hover:underline hover:underline-offset-[10px]">
