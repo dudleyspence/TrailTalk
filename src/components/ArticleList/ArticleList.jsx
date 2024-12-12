@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useArticles from "../../hooks/useArticles";
 import { ArticleCard } from "../ArticleCard/ArticleCard";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import PaginationControls from "../Pagination/PaginationControls";
-import LoadingAnimation from "../UI/Lotties/Loading/LoadingAnimation";
 import ListControls from "../SortingControls/ListControls";
 import ArticleListSkeleton from "./ArticleListSkeleton";
 
@@ -22,6 +21,10 @@ export default function ArticleList({ firebaseUID }) {
     order,
     firebaseUID,
   });
+
+  useEffect(() => {
+    setPageNo(1);
+  }, []);
 
   if (error) {
     return <p>Error fetching articles</p>;

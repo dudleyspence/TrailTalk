@@ -3,9 +3,10 @@ import axios from "axios";
 import { Input, Button } from "@material-tailwind/react";
 import useTopics from "../../hooks/useTopics";
 import { DragAndDropUploader } from "../../components/PostArticle/ArticleImageDropzone";
-import { TextEditorReact } from "../../components/PostArticle/TextEditor";
 import { useAuth } from "../../context/AuthContext";
 import { addArticle } from "../../../api";
+import BasicEditor from "../../components/PostArticle/TipTap/TipTapEditor";
+import { useNavigate } from "react-router-dom";
 
 export default function NewArticlePage() {
   const { topics, loading, error } = useTopics();
@@ -14,6 +15,7 @@ export default function NewArticlePage() {
   const [articleContent, setArticleContent] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const navigate = useNavigate();
   const { userLoggedIn } = useAuth();
 
   const handleSubmit = (e) => {
@@ -64,6 +66,7 @@ export default function NewArticlePage() {
         setSelectedTopic("");
         setArticleContent("");
         setSelectedImage(null);
+        navigate("/");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -109,8 +112,7 @@ export default function NewArticlePage() {
             </select>
           </div>
         )}
-
-        <TextEditorReact setArticleContent={setArticleContent} />
+        <BasicEditor setArticleContent={setArticleContent} />
         <DragAndDropUploader onFileSelect={(file) => setSelectedImage(file)} />
 
         <Button

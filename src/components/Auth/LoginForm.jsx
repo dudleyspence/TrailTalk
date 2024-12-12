@@ -82,10 +82,10 @@ export function LoginForm() {
       >
         <UseGoogle />
 
-        <div class="flex items-center my-6">
-          <hr class="flex-grow border-t border-gray-300" />
-          <span class="mx-4 text-gray-500 text-sm">or</span>
-          <hr class="flex-grow border-t border-gray-300" />
+        <div className="flex items-center my-6">
+          <hr className="flex-grow border-t border-gray-300" />
+          <span className="mx-4 text-gray-500 text-sm">or</span>
+          <hr className="flex-grow border-t border-gray-300" />
         </div>
 
         <div className="mb-1 flex flex-col gap-6">
