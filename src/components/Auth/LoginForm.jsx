@@ -20,6 +20,11 @@ export function LoginForm() {
     setEmail("example@gmail.com");
     setPassword("password");
   }
+  useEffect(() => {
+    if (email === "example@gmail.com" && password === "password") {
+      onSubmit({ preventDefault: () => {} });
+    }
+  }, [email, password]);
 
   useEffect(() => {
     if (userLoggedIn) {
