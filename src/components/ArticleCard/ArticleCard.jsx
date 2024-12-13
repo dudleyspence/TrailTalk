@@ -22,7 +22,7 @@ export function ArticleCard({
         floated={false}
         shadow={false}
         color="transparent"
-        className="flex-shrink-0 h-[50%] m-0 relative rounded-none overflow-hidden aspect-[3/2]"
+        className="flex-shrink-0 h-[60%] xl:h-[50%] m-0 relative rounded-none overflow-hidden aspect-[3/2]"
       >
         <Link to={`/article/${article.article_id}`} className="block h-full">
           <img
@@ -32,7 +32,7 @@ export function ArticleCard({
           />
         </Link>
       </CardHeader>
-      <CardBody className="h-[50%] flex flex-col justify-between p-4 md:p-6">
+      <CardBody className=" h-[40%] xl:h-[50%] flex flex-col justify-between p-4 md:p-6">
         <div className="flex flex-row justify-between gap-3 items-start">
           <Link to={`/article/${article.article_id}`}>
             <Typography className="hover:underline underline-offset-8 text-md sm:text-2xl font-bold">
