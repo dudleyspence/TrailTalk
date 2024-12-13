@@ -39,7 +39,7 @@ export default function DeleteArticle({ article_id, setArticles, articles }) {
     <>
       <Button onClick={handleOpen} className="p-0" variant="gradient">
         <svg
-          className="h-12 w-12 fill-white"
+          className="h-8 w-8 fill-white"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
           aria-labelledby="trashCanTitle"

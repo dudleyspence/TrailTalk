@@ -13,9 +13,11 @@ import {
 import { useLoginModal } from "../../context/LoginModelContext";
 import { Link } from "react-router-dom";
 import logo from "../../assets/Brand/Logo/TrailLogo.png";
+import { useHelpModal } from "../../context/HelpModelContext";
 
 export function LoginModal() {
   const { isOpen, closeLoginModal } = useLoginModal();
+  const { openHelpModal } = useHelpModal();
 
   return (
     <Dialog
@@ -96,7 +98,14 @@ export function LoginModal() {
         </div>
       </DialogBody>
       <DialogFooter className="justify-between gap-2">
-        <Button variant="outlined" size="sm" onClick={closeLoginModal}>
+        <Button
+          variant="outlined"
+          size="sm"
+          onClick={() => {
+            closeLoginModal();
+            openHelpModal();
+          }}
+        >
           Learn More
         </Button>
       </DialogFooter>

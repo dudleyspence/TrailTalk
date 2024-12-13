@@ -1,8 +1,11 @@
 import { Typography } from "@material-tailwind/react";
 import logo from "../../assets/Brand/Logo/TrailLogo.png";
 import { Link } from "react-router-dom";
+import { useHelpModal } from "../../context/HelpModelContext";
 
 export default function Footer() {
+  const { openHelpModal } = useHelpModal();
+
   return (
     <footer className="w-full bg-white p-8">
       <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-white text-center md:justify-between">
@@ -43,6 +46,15 @@ export default function Footer() {
               Contribute
             </Typography>
           </li>
+          <Typography
+            href="https://www.dudleyspence.com/en"
+            target="_blank"
+            color="blue-gray"
+            onClick={openHelpModal}
+            className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500 cursor-pointer"
+          >
+            Help
+          </Typography>
           <li>
             <Typography
               as="a"

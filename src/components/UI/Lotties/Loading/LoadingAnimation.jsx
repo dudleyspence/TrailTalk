@@ -13,8 +13,8 @@ export default function LoadingAnimation() {
   };
 
   return (
-    <div className="h-[60vh] flex flex-col justify-center items-center">
-      <Lottie options={defaultOptions} height={200} width={200} />
+    <div className="h-[40vh] flex flex-col justify-center items-center">
+      <Lottie options={defaultOptions} height={150} width={150} />
     </div>
   );
 }

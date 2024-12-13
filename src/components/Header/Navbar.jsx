@@ -24,6 +24,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/solid";
 import { doSignOut } from "../../firebase/auth";
+import { useHelpModal } from "../../context/HelpModelContext";
 
 const profileMenuItems = [
   {
@@ -52,6 +53,8 @@ function ProfileMenu({ user }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
+  const { openHelpModal } = useHelpModal();
+
   const closeMenu = () => setIsMenuOpen(false);
 
   const handleMenuItemClick = (action) => {
@@ -64,7 +67,7 @@ function ProfileMenu({ user }) {
         navigate("/edit-profile");
         break;
       case "help":
-        navigate("/help");
+        openHelpModal();
         break;
       case "signOut":
         handleSignOut();

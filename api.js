@@ -108,3 +108,9 @@ export const addUser = (firebase_uid, username, name, avatar_url) => {
 
   return newsApi.post("/users", body);
 };
+
+export const updateUser = (firebase_uid, update) => {
+  const body = update;
+
+  return newsApi.patch(`/users/${firebase_uid}`, body);
+};

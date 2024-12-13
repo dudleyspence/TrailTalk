@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Input, Button } from "@material-tailwind/react";
 import useTopics from "../../hooks/useTopics";
-import { DragAndDropUploader } from "../../components/PostArticle/ArticleImageDropzone";
+import { DragAndDropUploader } from "../../components/Utils/ArticleImageDropzone";
 import { useAuth } from "../../context/AuthContext";
 import { addArticle } from "../../../api";
 import BasicEditor from "../../components/PostArticle/TipTap/TipTapEditor";
 import { useNavigate } from "react-router-dom";
+import { PreviewModel } from "../../components/PostArticle/PreviewModel";
 
 export default function NewArticlePage() {
   const { topics, loading, error } = useTopics();
@@ -14,6 +15,7 @@ export default function NewArticlePage() {
   const [selectedTopic, setSelectedTopic] = useState("");
   const [articleContent, setArticleContent] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
   const [uploading, setUploading] = useState(false);
   const navigate = useNavigate();
   const { userLoggedIn } = useAuth();
@@ -113,22 +115,35 @@ export default function NewArticlePage() {
           </div>
         )}
         <BasicEditor setArticleContent={setArticleContent} />
-        <DragAndDropUploader onFileSelect={(file) => setSelectedImage(file)} />
+        <DragAndDropUploader
+          previewUrl={previewUrl}
+          setPreviewUrl={setPreviewUrl}
+          onFileSelect={(file) => setSelectedImage(file)}
+        />
 
-        <Button
-          type="submit"
-          size="sm"
-          className="w-fit self-end"
-          disabled={
-            uploading ||
-            !title.trim() ||
-            !selectedTopic ||
-            !articleContent.trim() ||
-            !selectedImage
-          }
-        >
-          {uploading ? "Uploading..." : "Submit Article"}
-        </Button>
+        <div className="w-full flex flex-row justify-end gap-5">
+          <PreviewModel
+            title={title}
+            topic={selectedTopic}
+            body={articleContent}
+            image={previewUrl}
+            uploading={uploading}
+          />
+          <Button
+            type="submit"
+            size="sm"
+            className="w-fit self-end"
+            disabled={
+              uploading ||
+              !title.trim() ||
+              !selectedTopic ||
+              !articleContent.trim() ||
+              !selectedImage
+            }
+          >
+            {uploading ? "Uploading..." : "Submit Article"}
+          </Button>
+        </div>
       </form>
     </div>
   );

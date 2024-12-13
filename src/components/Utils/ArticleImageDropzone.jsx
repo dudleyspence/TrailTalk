@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import { FaceSmileIcon } from "@heroicons/react/20/solid";
+import React from "react";
 import { useDropzone } from "react-dropzone";
 
-export function DragAndDropUploader({ onFileSelect }) {
-  const [previewUrl, setPreviewUrl] = useState(null);
-
+export function DragAndDropUploader({
+  onFileSelect,
+  previewUrl,
+  setPreviewUrl,
+  avatar = false,
+}) {
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
     onDrop: (acceptedFiles) => {
@@ -37,7 +41,9 @@ export function DragAndDropUploader({ onFileSelect }) {
           <img
             src={previewUrl}
             alt="Preview"
-            className="xl:aspect-square w-full rounded-lg object-cover object-center"
+            className={`aspect-square rounded-lg object-cover object-center ${
+              avatar ? "w-[100px] h-[100px]" : "w-full"
+            }`}
           />
           <button onClick={removeImage} className="text-red-500 underline">
             Remove Image
