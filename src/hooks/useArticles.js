@@ -15,6 +15,7 @@ const useArticles = ({
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    console.log(pageNo);
     fetchArticles(topic, sortBy, order, pageNo, articlesPerPage, firebaseUID)
       .then(({ data }) => {
         setTotal(data.total);
