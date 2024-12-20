@@ -6,6 +6,7 @@ const useArticles = ({
   sortBy,
   order,
   pageNo,
+  setPageNo,
   articlesPerPage,
   firebaseUID,
 }) => {
@@ -13,6 +14,17 @@ const useArticles = ({
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setPageNo(1);
+  }, [topic]);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [topic, pageNo]);
 
   useEffect(() => {
     console.log(pageNo);

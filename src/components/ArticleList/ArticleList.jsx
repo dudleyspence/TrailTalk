@@ -13,13 +13,10 @@ export default function ArticleList({ firebaseUID }) {
   const [sortBy, setSortBy] = useState("created_at");
   const [order, setOrder] = useState("desc");
 
-  useEffect(() => {
-    setPageNo(1);
-  }, [topic]);
-
   const { articles, setArticles, total, loading, error } = useArticles({
     topic,
     pageNo,
+    setPageNo,
     articlesPerPage,
     sortBy,
     order,
