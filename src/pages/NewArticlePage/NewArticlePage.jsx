@@ -42,12 +42,18 @@ export default function NewArticlePage() {
 
     setUploading(true);
 
+    const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+    const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+
     const formData = new FormData();
     formData.append("file", selectedImage);
-    formData.append("upload_preset", "TrailArticles");
+    formData.append("upload_preset", uploadPreset);
 
     axios
-      .post("https://api.cloudinary.com/v1_1/dvb1ktpjd/image/upload", formData)
+      .post(
+        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+        formData
+      )
       .then((response) => {
         const imageUrl = response.data.secure_url;
 
