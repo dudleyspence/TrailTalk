@@ -12,14 +12,25 @@ export function LoginForm() {
   const [password, setPassword] = useState("");
   const [isSigningIn, setSigningIn] = useState(false);
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
 
   const { userLoggedIn, setUserLoggedIn } = useAuth();
   const navigate = useNavigate();
+
+  function validateForm() {
+    const errors = {};
+    if (!email) errors.email = true;
+    if (!password) errors.password = true;
+
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  }
 
   function handleDemoLogin() {
     setEmail("example@gmail.com");
     setPassword("password");
   }
+
   useEffect(() => {
     if (email === "example@gmail.com" && password === "password") {
       onSubmit({ preventDefault: () => {} });
@@ -34,6 +45,11 @@ export function LoginForm() {
 
   function onSubmit(event) {
     event.preventDefault();
+
+    if (!validateForm()) {
+      setError("Please fill all required fields correctly.");
+      return;
+    }
 
     if (!isSigningIn) {
       setSigningIn(true);
@@ -76,14 +92,11 @@ export function LoginForm() {
       <Typography color="gray" className="mt-1 font-normal">
         Login below and get back on the trail...
       </Typography>
-      {error && (
-        <Typography color="red" className="mt-2 text-center">
-          {error}
-        </Typography>
-      )}
+
       <form
         className="mt-5 mb-2 w-80 max-w-screen-lg sm:w-96"
         onSubmit={onSubmit}
+        autoComplete="on"
       >
         <UseGoogle />
 
@@ -98,33 +111,46 @@ export function LoginForm() {
             Your Email
           </Typography>
           <Input
+            name="email"
             type="email"
             size="lg"
             placeholder="name@mail.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+            className={
+              fieldErrors.email
+                ? "!border-red-500 !border-t-red-500 focus:!border-t-red-500 bg-red-50"
+                : "border-t-blue-gray-200 focus:!border-t-gray-900"
+            }
             labelProps={{
               className: "before:content-none after:content-none",
             }}
-            required
           />
           <Typography variant="h6" color="blue-gray" className="-mb-3">
             Password
           </Typography>
           <Input
             type="password"
+            name="current-password"
             size="lg"
             placeholder="********"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+            className={
+              fieldErrors.password
+                ? "!border-red-500 !border-t-red-500 focus:!border-t-red-500 bg-red-50"
+                : "border-t-blue-gray-200 focus:!border-t-gray-900"
+            }
             labelProps={{
               className: "before:content-none after:content-none",
             }}
-            required
           />
         </div>
+        {error && (
+          <Typography color="red" className="mt-2 text-center">
+            {error}
+          </Typography>
+        )}
 
         <Button type="submit" className="mt-6" fullWidth disabled={isSigningIn}>
           {isSigningIn ? "Logging in..." : "Login"}

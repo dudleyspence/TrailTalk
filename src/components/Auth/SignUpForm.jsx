@@ -19,7 +19,10 @@ export function SignUpForm() {
   const [password, setPassword] = useState("");
   const [isSigningUp, setSigningUp] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  // validation states
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
 
   const { userLoggedIn, setUserLoggedIn } = useAuth();
   const navigate = useNavigate();
@@ -30,16 +33,24 @@ export function SignUpForm() {
     }
   }, [userLoggedIn, navigate]);
 
+  function validateForm() {
+    const errors = {};
+    if (!email) errors.email = true;
+    if (!username) errors.username = true;
+    if (!password) errors.password = true;
+    if (!name) errors.name = true;
+    if (!confirmPassword) errors.confirmPassword = true;
+    if (password !== confirmPassword) errors.passwordMatch = true;
+
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  }
+
   function onSubmit(event) {
     event.preventDefault();
 
-    if (!email || !password || !name || !confirmPassword) {
-      setError("All fields are required");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
+    if (!validateForm()) {
+      setError("Please fill all required fields correctly.");
       return;
     }
 
@@ -50,27 +61,18 @@ export function SignUpForm() {
       doCreateUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
           const firebaseUser = userCredential.user;
-          console.log(firebaseUser);
 
           return addUser(firebaseUser.uid, username, name);
         })
         .then((userData) => {
           if (!userData) {
-            throw { code: "auth/user-not-found" };
+            throw { code: "user-not-found" };
           }
-          console.log(userData);
           setUserLoggedIn(userData.data.user);
         })
         .catch((error) => {
-          if (error.code === "auth/wrong-password") {
-            setError("Incorrect password. Please try again.");
-          } else if (error.code === "auth/user-not-found") {
-            setError("User not found. Please sign up first.");
-          } else if (error.code === "auth/invalid-email") {
-            setError("Invalid email format. Please try again.");
-          } else {
-            setError("An unexpected error occurred. Please try again.");
-          }
+          console.log(error);
+          setError("An unexpected error occurred. Please try again.");
         })
         .finally(() => {
           setSigningUp(false);
@@ -89,13 +91,14 @@ export function SignUpForm() {
       <form
         className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
         onSubmit={onSubmit}
+        autoComplete="on"
       >
         <UseGoogle />
 
-        <div class="flex items-center my-6">
-          <hr class="flex-grow border-t border-gray-300" />
-          <span class="mx-4 text-gray-500 text-sm">or</span>
-          <hr class="flex-grow border-t border-gray-300" />
+        <div className="flex items-center my-6">
+          <hr className="flex-grow border-t border-gray-300" />
+          <span className="mx-4 text-gray-500 text-sm">or</span>
+          <hr className="flex-grow border-t border-gray-300" />
         </div>
         <div className="mb-1 flex flex-col gap-6">
           <Typography variant="h6" color="blue-gray" className="-mb-3">
@@ -104,9 +107,14 @@ export function SignUpForm() {
           <Input
             size="lg"
             value={name}
+            name="name"
             onChange={(e) => setName(e.target.value)}
             placeholder="Joe Bloggs"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+            className={
+              fieldErrors.name
+                ? "!border-red-500 !border-t-red-500 focus:!border-t-red-500 bg-red-50"
+                : "border-t-blue-gray-200 focus:!border-t-gray-900"
+            }
             labelProps={{
               className: "before:content-none after:content-none",
             }}
@@ -116,10 +124,15 @@ export function SignUpForm() {
           </Typography>
           <Input
             size="lg"
+            name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="e.g. TrailBlazer98"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+            className={
+              fieldErrors.username
+                ? "!border-red-500 !border-t-red-500 focus:!border-t-red-500 bg-red-50"
+                : "border-t-blue-gray-200 focus:!border-t-gray-900"
+            }
             labelProps={{
               className: "before:content-none after:content-none",
             }}
@@ -129,10 +142,15 @@ export function SignUpForm() {
           </Typography>
           <Input
             size="lg"
+            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="name@mail.com"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+            className={
+              fieldErrors.email
+                ? "!border-red-500 !border-t-red-500 focus:!border-t-red-500 bg-red-50"
+                : "border-t-blue-gray-200 focus:!border-t-gray-900"
+            }
             labelProps={{
               className: "before:content-none after:content-none",
             }}
@@ -142,11 +160,16 @@ export function SignUpForm() {
           </Typography>
           <Input
             value={password}
+            name="new-password"
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             size="lg"
             placeholder="********"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+            className={
+              fieldErrors.password
+                ? "!border-red-500 !border-t-red-500 focus:!border-t-red-500 bg-red-50"
+                : "border-t-blue-gray-200 focus:!border-t-gray-900"
+            }
             labelProps={{
               className: "before:content-none after:content-none",
             }}
@@ -156,15 +179,23 @@ export function SignUpForm() {
           </Typography>
           <Input
             value={confirmPassword}
+            name="confirm-password"
             onChange={(e) => setConfirmPassword(e.target.value)}
             type="password"
             size="lg"
             placeholder="********"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+            className={
+              fieldErrors.confirmPassword | fieldErrors.passwordMatch
+                ? "!border-red-500 !border-t-red-500 focus:!border-t-red-500 bg-red-50"
+                : "border-t-blue-gray-200 focus:!border-t-gray-900"
+            }
             labelProps={{
               className: "before:content-none after:content-none",
             }}
           />
+          {!fieldErrors.password &&
+            !fieldErrors.confirmPassword &&
+            fieldErrors.passwordMatch && <p>Passwords do not match</p>}
         </div>
         <Checkbox
           label={
@@ -184,8 +215,9 @@ export function SignUpForm() {
           }
           containerProps={{ className: "-ml-2.5" }}
         />
+        {error && <p>{error}</p>}
         <Button type="submit" className="mt-6" fullWidth disabled={isSigningUp}>
-          {isSigningUp ? "Logging in..." : "Login"}
+          {isSigningUp ? "Signing up..." : "Sign up"}
         </Button>
         <Typography color="gray" className="mt-4 text-center font-normal">
           Already have an account?{" "}
