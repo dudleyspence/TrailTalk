@@ -102,7 +102,7 @@ export function SignUpForm() {
         </div>
         <div className="mb-1 flex flex-col gap-6">
           <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Your Full Name
+            Name
           </Typography>
           <Input
             size="lg"
@@ -120,7 +120,7 @@ export function SignUpForm() {
             }}
           />
           <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Your Usernane
+            Username
           </Typography>
           <Input
             size="lg"
@@ -138,7 +138,7 @@ export function SignUpForm() {
             }}
           />
           <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Your Email
+            Email
           </Typography>
           <Input
             size="lg"
@@ -215,7 +215,12 @@ export function SignUpForm() {
           }
           containerProps={{ className: "-ml-2.5" }}
         />
-        {error && <p>{error}</p>}
+        {error && (
+          <Typography color="red" className="mt-2 text-center">
+            {error}
+          </Typography>
+        )}
+
         <Button type="submit" className="mt-6" fullWidth disabled={isSigningUp}>
           {isSigningUp ? "Signing up..." : "Sign up"}
         </Button>

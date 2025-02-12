@@ -45,9 +45,10 @@ export default function ArticleList({ firebaseUID }) {
             canSortByComments={true}
           />
           <div className="w-full grid grid-cols-1 xl:grid-cols-2 items-stretch gap-10">
-            {articles.map((article) => (
+            {articles.map((article, index) => (
               <ArticleCard
                 key={article.article_id}
+                index={index}
                 article={article}
                 deleteComponent={firebaseUID}
                 articles={articles}

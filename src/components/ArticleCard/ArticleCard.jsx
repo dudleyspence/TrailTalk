@@ -15,6 +15,7 @@ export function ArticleCard({
   deleteComponent,
   setArticles,
   articles,
+  index,
 }) {
   return (
     <Card className="h-full w-full shadow-lg hover:shadow-2xl flex flex-col overflow-hidden relative cursor-pointer">

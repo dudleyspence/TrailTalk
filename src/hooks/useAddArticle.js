@@ -32,4 +32,4 @@ const useAddArticle = ({
   return { loading, error, success, addNewComment };
 };
 
-export default useAddComment;
+export default useAddArticle;
