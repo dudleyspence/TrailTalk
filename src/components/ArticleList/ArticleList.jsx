@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { useState, Suspense, lazy } from "react";
 import useArticles from "../../hooks/useArticles";
-import { ArticleCard } from "../ArticleCard/ArticleCard";
+import  ArticleCard from "../ArticleCard/ArticleCard";
 import { useParams } from "react-router-dom";
 import PaginationControls from "../Pagination/PaginationControls";
 import ListControls from "../SortingControls/ListControls";
 import ArticleListSkeleton from "./ArticleListSkeleton";
+import ArticleSkeleton from "../Article/ArticleSkeleton";
+
+const LazyArticleCard  = lazy(() => import ("../ArticleCard/ArticleCard"))
 
 export default function ArticleList({ firebaseUID }) {
   const { topic } = useParams();
@@ -45,16 +48,28 @@ export default function ArticleList({ firebaseUID }) {
             canSortByComments={true}
           />
           <div className="w-full grid grid-cols-1 xl:grid-cols-2 items-stretch gap-10">
-            {articles.map((article, index) => (
-              <ArticleCard
-                key={article.article_id}
-                index={index}
-                article={article}
-                deleteComponent={firebaseUID}
-                articles={articles}
-                setArticles={setArticles}
-              />
-            ))}
+          {articles.map((article, index) =>
+              index < 2 ? (
+                <ArticleCard
+                  key={article.article_id}
+                  index={index}
+                  article={article}
+                  deleteComponent={firebaseUID}
+                  articles={articles}
+                  setArticles={setArticles}
+                />
+              ) : (
+                <Suspense key={article.article_id} fallback={<ArticleSkeleton />}>
+                  <LazyArticleCard
+                    index={index}
+                    article={article}
+                    deleteComponent={firebaseUID}
+                    articles={articles}
+                    setArticles={setArticles}
+                  />
+                </Suspense>
+              )
+            )}
           </div>
           <PaginationControls
             pageNo={pageNo}
