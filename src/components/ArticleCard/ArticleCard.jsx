@@ -10,7 +10,7 @@ import CreatedTime from "../Utils/CreatedTime";
 import ArticleVotesControl from "../VotesControl/ArticleVotesControl";
 import DeleteArticle from "../Profile/DeleteArticle";
 
-export function ArticleCard({
+export default function ArticleCard({
   article,
   deleteComponent,
   setArticles,
